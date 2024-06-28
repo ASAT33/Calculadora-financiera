@@ -1,0 +1,63 @@
+[
+    {
+        "Código": 1001,
+        "Descripción": "Ají chombo",
+        "Costo unitario": "$2.00",
+        "Precio de venta": "$5.50"
+    },
+    {
+        "Código": 1002,
+        "Descripción": "Picante criollo",
+        "Costo unitario": "$2.00",
+        "Precio de venta": "$5.50"
+    },
+    {
+        "Código": 1003,
+        "Descripción": "Culantro y aji chombo",
+        "Costo unitario": "$2.05",
+        "Precio de venta": "$5.55"
+    },
+    {
+        "Código": 1004,
+        "Descripción": "Ají criollo",
+        "Costo unitario": "$1.75",
+        "Precio de venta": "$5.25"
+    },
+    {
+        "Código": 1005,
+        "Descripción": "Culantro extremo",
+        "Costo unitario": "$1.75",
+        "Precio de venta": "$5.25"
+    },
+    {
+        "Código": 1006,
+        "Descripción": "Entomatada criolla",
+        "Costo unitario": "$2.00",
+        "Precio de venta": "$5.50"
+    },
+    {
+        "Código": 1007,
+        "Descripción": "Piña acaramelada",
+        "Costo unitario": "$2.50",
+        "Precio de venta": "$6.00"
+    },
+    {
+        "Código": 1008,
+        "Descripción": "Explosión de mango",
+        "Costo unitario": "$2.50",
+        "Precio de venta": "$6.00"
+    },
+    {
+        "Código": 1009,
+        "Descripción": "Ají y guineo",
+        "Costo unitario": "$2.50",
+        "Precio de venta": "$6.00"
+    },
+    {
+        "Código": 1010,
+        "Descripción": "Manzana anaranjada",
+        "Costo unitario": "$2.25",
+        "Precio de venta": "$5.75"
+    }
+]
+

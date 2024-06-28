@@ -1,0 +1,2403 @@
+[
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-01-15",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-01-30",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-01-30",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-02-14",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-02-14",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-03-01",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-01",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-03-16",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-16",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-03-31",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-03-31",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-04-15",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-04-15",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-04-30",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-04-30",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-05-15",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-05-15",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-05-30",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-05-30",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-06-14",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-06-14",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-06-29",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-06-29",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-07-14",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-07-14",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-07-29",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-07-29",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-08-13",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-08-13",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-08-28",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-08-28",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-09-12",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-09-12",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-09-27",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-09-27",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-10-12",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-10-12",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-10-27",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-10-27",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-11-11",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-11-11",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-11-26",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-11-26",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-12-11",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-12-11",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2023-12-26",
+        "Cancelación":112.5
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1001,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1002,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1003,
+        "Cantidad":100.0,
+        "Costo unitario":2.05,
+        "Total":205.0,
+        "Abono":102.5,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":102.5
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1004,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1005,
+        "Cantidad":100.0,
+        "Costo unitario":1.75,
+        "Total":175.0,
+        "Abono":87.5,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":87.5
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1006,
+        "Cantidad":100.0,
+        "Costo unitario":2.0,
+        "Total":200.0,
+        "Abono":100.0,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":100.0
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1007,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1008,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1009,
+        "Cantidad":100.0,
+        "Costo unitario":2.5,
+        "Total":250.0,
+        "Abono":125.0,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":125.0
+    },
+    {
+        "Fecha":"2023-12-26",
+        "Producto":1010,
+        "Cantidad":100.0,
+        "Costo unitario":2.25,
+        "Total":225.0,
+        "Abono":112.5,
+        "Fecha de cancelación":"2024-01-10",
+        "Cancelación":112.5
+    }
+]
+

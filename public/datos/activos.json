@@ -1,0 +1,45 @@
+{
+  "activosCorrientes": {
+      "caja": 26699.00,
+      "cuentasPorCobrar": 276.08,
+      "inventario": 12010.45
+  },
+  "activosFijos": [
+      {
+          "nombre": "mobiliario",
+          "categoria": "mobiliario",
+          "precioCompra": 10000.00,
+          "fechaAdquisicion": "2021-01-01"
+      },
+      {
+          "nombre": "equiposDeOficina",
+          "categoria": "equipo de oficina",
+          "precioCompra": 5000.00,
+          "fechaAdquisicion": "2021-01-01"
+      },
+      {
+          "nombre": "vehiculo",
+          "categoria": "vehículo",
+          "precioCompra": 25000.00,
+          "fechaAdquisicion": "2021-01-01"
+      },
+      {
+          "nombre": "Sillon",
+          "categoria": "mobiliario",
+          "precioCompra": 1.00,
+          "fechaAdquisicion": "2024-06-12"
+      },
+      {
+          "nombre": "computadora",
+          "categoria": "equipo de oficina",
+          "precioCompra": 1.00,
+          "fechaAdquisicion": "2024-06-15"
+      },
+      {
+          "nombre": "auto",
+          "categoria": "vehículo",
+          "precioCompra": 1.00,
+          "fechaAdquisicion": "2024-06-10"
+      }
+  ]
+}
