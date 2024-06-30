@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://localhost:8080/datos/ventas_anuales.json')
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales.json')
         .then(response => response.json())
         .then(data => {
             let totalMonto = 0;
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error al obtener datos de ventas anuales:', error));
 
-    fetch('http://localhost:8080/datos/compras.json')
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/compras.json')
         .then(response => response.json())
         .then(comprasData => {
             const pasivoTotal = calcularPasivoTotal(comprasData);
@@ -20,12 +20,20 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error al obtener datos de compras:', error));
 
-    fetch('http://localhost:8080/datos/activos.json')
+        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activosCorrientes.json')
         .then(response => response.json())
-        .then(activosData => {
-            mostrarActivos(activosData);
+        .then(activosCorrientes => {
+            // Utilizar fetch para obtener datos de activos fijos desde Firebase
+            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activosFijos.json')
+                .then(response => response.json())
+                .then(activosFijos => {
+                    // Llamar a la función para mostrar los activos con los datos obtenidos
+                    mostrarDatos(activosCorrientes, activosFijos);
+                })
+                .catch(error => console.error('Error al obtener datos de activos fijos:', error));
         })
-        .catch(error => console.error('Error al obtener datos de activos:', error));
+        .catch(error => console.error('Error al obtener datos de activos corrientes:', error));
+
 });
 
 
@@ -47,8 +55,8 @@ function calcularPasivoTotal(comprasData) {
     return pasivoTotal;
 }
 
-function mostrarActivos(activosData) {
-    if (!activosData || !activosData.activosCorrientes || !activosData.activosFijos) {
+function mostrarDatos(activosCorrientes, activosFijos) {
+    if (!activosCorrientes || !activosFijos) {
         console.error("Los datos de activos no están definidos o están incompletos");
         return;
     }
@@ -57,18 +65,16 @@ function mostrarActivos(activosData) {
     const activosFijosElement = document.getElementById('activos-fijos');
     const activosTotaleElement = document.getElementById('total-activos');
 
-    const activosCorrientes = activosData.activosCorrientes;
-    const activosFijos = activosData.activosFijos;
     let activosCorrientesHTML = `
         <li>Caja (efectivo): $${activosCorrientes.caja.toFixed(2)}</li>
         <li>Cuentas por Cobrar: $${activosCorrientes.cuentasPorCobrar.toFixed(2)}</li>
         <li>Inventario: $${activosCorrientes.inventario.toFixed(2)}</li>
-      <li>Total: $${(activosCorrientes.caja + activosCorrientes.cuentasPorCobrar + activosCorrientes.inventario).toFixed(2)}</li>
+        <li>Total: $${(activosCorrientes.caja + activosCorrientes.cuentasPorCobrar + activosCorrientes.inventario).toFixed(2)}</li>
     `;
+    
     let totalMobiliario = 0;
     let totalEquipoOficina = 0;
     let totalVehiculos = 0;
-
     let totalNeto = 0;
     let depreciacionAcumuladaTotal = 0;
 
@@ -78,7 +84,7 @@ function mostrarActivos(activosData) {
         const fechaInicial = new Date(fechaAdquisicion);
         const añosEnOperacion = calcularAñosEnOperacion(fechaInicial);
 
-        //  10%
+        //  10% depreciacion anual
         const depreciacionAnual = 0.10;
 
         const depreciacionAcumulada = precioCompra * depreciacionAnual * añosEnOperacion;
@@ -101,26 +107,27 @@ function mostrarActivos(activosData) {
         }
     });
 
-    activosCorrientesElement.innerHTML = activosCorrientesHTML;
-
-    activosFijosElement.innerHTML = `
+    let activosFijosHTML = `
         <li>Mobiliario: $${totalMobiliario.toFixed(2)}</li>
         <li>Equipo de oficina: $${totalEquipoOficina.toFixed(2)}</li>
         <li>Vehículos: $${totalVehiculos.toFixed(2)}</li>
         <li>Total Neto (sin depreciación): $${totalNeto.toFixed(2)}</li>
         <li>Depreciación acumulada total: $${depreciacionAcumuladaTotal.toFixed(2)}</li>
         <li>Total (con depreciación): $${(totalNeto - depreciacionAcumuladaTotal).toFixed(2)}</li>
-        
     `;
 
-activosTotaleElement.innerHTML = `
+    let totalActivos = activosCorrientes.caja + activosCorrientes.cuentasPorCobrar + activosCorrientes.inventario + (totalNeto - depreciacionAcumuladaTotal);
+    let totalActivosHTML = `
+        <li>Total: $${totalActivos.toFixed(2)}</li>
+    `;
 
-<li>Total: $${(activosCorrientes.caja + activosCorrientes.cuentasPorCobrar + activosCorrientes.inventario+(totalNeto-depreciacionAcumuladaTotal)).toFixed(2)}</li>
-
-
-`;
-
+    activosCorrientesElement.innerHTML = activosCorrientesHTML;
+    activosFijosElement.innerHTML = activosFijosHTML;
+    activosTotaleElement.innerHTML = totalActivosHTML;
 }
+
+// Llamar a la función principal para obtener y mostrar los datos desde Firebase
+mostrarActivos(); 
 function calcularAñosEnOperacion(fechaInicial) {
     const fechaActual = new Date();
     const tiempoEnMilisegundos = fechaActual - fechaInicial.getTime();
