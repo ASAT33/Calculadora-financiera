@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales.json')
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(data => {
             let totalMonto = 0;
@@ -11,33 +11,40 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error al obtener datos de ventas anuales:', error));
 
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/compras.json')
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
         .then(response => response.json())
         .then(comprasData => {
             const pasivoTotal = calcularPasivoTotal(comprasData);
-            const pasivoTotalElement = document.getElementById('pasivo-total');
-            pasivoTotalElement.textContent = `CXP ${pasivoTotal}`;
+            const pasivoTotalElement = document.getElementById('cxp');
+            pasivoTotalElement.innerHTML = `<li>CXP $${pasivoTotal}</li>`;
         })
         .catch(error => console.error('Error al obtener datos de compras:', error));
 
-        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activosCorrientes.json')
+        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosCorrientes.json')
         .then(response => response.json())
         .then(activosCorrientes => {
-            // Utilizar fetch para obtener datos de activos fijos desde Firebase
-            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activosFijos.json')
+
+            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json')
                 .then(response => response.json())
                 .then(activosFijos => {
-                    // Llamar a la función para mostrar los activos con los datos obtenidos
-                    mostrarDatos(activosCorrientes, activosFijos);
+
+                    mostrarActivos(activosCorrientes, activosFijos);
                 })
                 .catch(error => console.error('Error al obtener datos de activos fijos:', error));
         })
         .catch(error => console.error('Error al obtener datos de activos corrientes:', error));
 
+        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/prestamo.json')
+        .then(response => response.json())
+        .then(prestamoData => {
+             prestamos(prestamoData)
+             
+        })
+        .catch(error => console.error('Error al obtener datos del préstamo:', error));
 });
 
 
-
+//calcula la cxp segun la fecha por si ya se pagó o no 
 function calcularPasivoTotal(comprasData) {
     let pasivoTotal = 0;
     const fechaBalanceGeneral = new Date("2023-12-31"); 
@@ -55,7 +62,39 @@ function calcularPasivoTotal(comprasData) {
     return pasivoTotal;
 }
 
-function mostrarDatos(activosCorrientes, activosFijos) {
+function prestamos(prestamoData, añosTranscurridos) {
+    let años = prestamoData.años;
+    let principal = prestamoData.principal;
+    let tasaAnual = prestamoData.tasaAnual / 100; 
+
+    let tasaMensual = tasaAnual / 12;
+    let numPagosMensuales = años * 12;
+    let pagoMensual = principal * (tasaMensual * Math.pow(1 + tasaMensual, numPagosMensuales)) / (Math.pow(1 + tasaMensual, numPagosMensuales) - 1);
+    pagoMensual = parseFloat(pagoMensual.toFixed(2));
+
+    // Calculo del pago anual
+    let pagoAnual = pagoMensual * 12;
+
+    let totalConIntereses = pagoMensual * numPagosMensuales;
+
+    let pagosRealizados = añosTranscurridos * 12;
+    let cantidadRestante = principal * Math.pow(1 + tasaMensual, numPagosMensuales) - (Math.pow(1 + tasaMensual, pagosRealizados) - 1) / (tasaMensual * Math.pow(1 + tasaMensual, pagosRealizados));
+
+    cantidadRestante = parseFloat(cantidadRestante.toFixed(2)); 
+
+    const prestamoElement = document.getElementById('prestamo-anual');
+    prestamoElement.innerHTML = `<li>Total del préstamo con intereses: $${totalConIntereses}</li>
+
+    `;
+    return {
+        pagoAnual: pagoAnual,
+        totalConIntereses: totalConIntereses,
+
+    };
+}
+
+//esto es para la parte de los activos 
+function mostrarActivos(activosCorrientes, activosFijos) {
     if (!activosCorrientes || !activosFijos) {
         console.error("Los datos de activos no están definidos o están incompletos");
         return;
@@ -126,8 +165,10 @@ function mostrarDatos(activosCorrientes, activosFijos) {
     activosTotaleElement.innerHTML = totalActivosHTML;
 }
 
-// Llamar a la función principal para obtener y mostrar los datos desde Firebase
+
 mostrarActivos(); 
+
+
 function calcularAñosEnOperacion(fechaInicial) {
     const fechaActual = new Date();
     const tiempoEnMilisegundos = fechaActual - fechaInicial.getTime();
