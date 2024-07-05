@@ -41,6 +41,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 .catch(error => console.error('Error al obtener datos de préstamos:', error));
         })
         .catch(error => console.error('Error al obtener datos de compras:', error));
+
+
+        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/registros/balances/diciembre23.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          mostrarDatos(data);
+          document.getElementById('balance-diciembre').style.display = 'block';
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+        });
+      
+        document.getElementById('balance-actual').style.display = 'block';
+        document.getElementById('balance-diciembre').style.display = 'none';
+        document.getElementById('btn-actual').addEventListener('click', function() {
+            document.getElementById('balance-actual').style.display = 'block';
+            document.getElementById('balance-diciembre').style.display = 'none';
+        });
+
+        document.getElementById('btn-diciembre').addEventListener('click', function() {
+            document.getElementById('balance-actual').style.display = 'none';
+            document.getElementById('balance-diciembre').style.display = 'block';
+        });
+        
+
 });
 
 //mostrar activos
@@ -68,31 +98,33 @@ function mostrarActivos(activosCorrientes, activosFijos) {
     let depreciacionAcumuladaTotal = 0;
 
     activosFijos.forEach(activo => {
-        const { nombre, categoria, precioCompra, fechaAdquisicion } = activo;
+        if (activo) { // Verificar si el activo existe y no es null
+            const { nombre, categoria, precioCompra, fechaAdquisicion } = activo;
 
-        const fechaInicial = new Date(fechaAdquisicion);
-        const añosEnOperacion = calcularAñosEnOperacion(fechaInicial);
+            const fechaInicial = new Date(fechaAdquisicion);
+            const añosEnOperacion = calcularAñosEnOperacion(fechaInicial);
 
-        //  10% depreciacion anual
-        const depreciacionAnual = 0.10;
+            //  10% depreciacion anual
+            const depreciacionAnual = 0.10;
 
-        const depreciacionAcumulada = precioCompra * depreciacionAnual * añosEnOperacion;
+            const depreciacionAcumulada = precioCompra * depreciacionAnual * añosEnOperacion;
 
-        totalNeto += precioCompra;
-        depreciacionAcumuladaTotal += depreciacionAcumulada;
+            totalNeto += precioCompra;
+            depreciacionAcumuladaTotal += depreciacionAcumulada;
 
-        switch (categoria) {
-            case 'mobiliario':
-                totalMobiliario += precioCompra;
-                break;
-            case 'equipo de oficina':
-                totalEquipoOficina += precioCompra;
-                break;
-            case 'vehículo':
-                totalVehiculos += precioCompra;
-                break;
-            default:
-                break;
+            switch (categoria) {
+                case 'mobiliario':
+                    totalMobiliario += precioCompra;
+                    break;
+                case 'equipo de oficina':
+                    totalEquipoOficina += precioCompra;
+                    break;
+                case 'vehículo':
+                    totalVehiculos += precioCompra;
+                    break;
+                default:
+                    break;
+            }
         }
     });
 
@@ -120,6 +152,7 @@ function mostrarActivos(activosCorrientes, activosFijos) {
         totalAcorrien: totalAcorrien
     };
 }
+
 
 //mostrar pasivos
 function mostrarPasivos(comprasData, prestamoData) {
@@ -206,3 +239,58 @@ function calcularAñosEnOperacion(fechaInicial) {
     const añosEnMilisegundos = 1000 * 60 * 60 * 24 * 365; // en milisegundos
     return Math.floor(tiempoEnMilisegundos / añosEnMilisegundos);
 }
+
+function mostrarDatos(balanceData) {
+    // Mostrar activos corrientes
+    const activosCorrientesHTML = `
+      <li>Caja (efectivo): $${balanceData.caja.toFixed(2)}</li>
+      <li>Cuentas por Cobrar: $${balanceData.cxc.toFixed(2)}</li>
+      <li>Inventario: $${balanceData.inventario.toFixed(2)}</li>
+      <li>Total: $${balanceData.total_activos_corrientes.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-activos-corrientes').innerHTML = activosCorrientesHTML;
+  
+    // Mostrar activos fijos
+    const activosFijosHTML = `
+      <li>Mobiliario: $${balanceData.mobiliario.toFixed(2)}</li>
+      <li>Equipo de oficina: $${balanceData.equipos_oficina.toFixed(2)}</li>
+      <li>Vehículos: $${balanceData.vehiculo.toFixed(2)}</li>
+      <li>Total(Sin depreciacion): $${balanceData.total_activo_fijo_neto.toFixed(2)}</li>
+     <li>Depreciacion: $${balanceData.depreciacion_3_anos.toFixed(2)}</li>
+     <li>Total(Con depreciaciación): $${balanceData.total_activos_fijos.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-activos-fijos').innerHTML = activosFijosHTML;
+  
+    // Mostrar total de activos
+    const totalActivosHTML = `
+      <li>Total: $${balanceData.total_activo.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-total-activos').innerHTML = totalActivosHTML;
+  
+    // Mostrar pasivos corrientes y fijos
+    const pasivosCorrientesHTML = `
+      <li>Cuentas por pagar: $${balanceData.cuentas_por_pagar.toFixed(2)}</li>
+      <li> Préstamos a Corto Plazo: $${balanceData.prestamos_corto_plazo.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-cxp').innerHTML = pasivosCorrientesHTML;
+  
+    const pasivosFijosHTML = `
+      <li>Prestamos a corto plazo: $${balanceData.prestamos_corto_plazo.toFixed(2)}</li>
+      <li>Prestamos a largo plazo: $${balanceData.prestamos_largo_plazo.toFixed(2)}</li>
+      <li>Total: $${balanceData.total_pasivos.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-prestamo-anual').innerHTML = pasivosFijosHTML;
+  
+    // Mostrar suma total
+    const sumaTotalHTML = `
+      <li>Total Pasivo + Capital: $${balanceData.total_pasivo_patrimonio.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-suma-total').innerHTML = sumaTotalHTML;
+  
+    // Mostrar capital
+    const capitalHTML = `
+      <li>Capital: $${balanceData.capital.toFixed(2)}</li>
+    `;
+    document.getElementById('diciembre-capital').innerHTML = capitalHTML;
+  }
+  
