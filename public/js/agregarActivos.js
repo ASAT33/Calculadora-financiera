@@ -1,6 +1,13 @@
+const button = document.getElementById('button')
+const loadingImg = document.getElementById('loading')
+
 document.getElementById('form-nuevo-activo').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    button.classList.toggle("add")
+    loadingImg.classList.toggle("add")
+    document.getElementById("container-message").style = "background-color: white; height: 0px;"
+    
     const nombre = document.getElementById('nombre').value;
     const categoria = document.getElementById('categoria').value;
     const precioCompra = parseFloat(document.getElementById('precioCompra').value);
@@ -34,17 +41,29 @@ document.getElementById('form-nuevo-activo').addEventListener('submit', function
             if (response.ok) {
                 console.log("Nuevo activo agregado exitosamente.");
                 document.getElementById('form-nuevo-activo').reset();
+                message("Nuevo activo agregado exitosamente.","#90fdad")
+                //document.getElementById("message").innerHTML = "Nuevo activo agregado exitosamente."
+                //document.getElementById("container-message").style = "background-color: #90fdad; height: 48px;"
                 cargarActivos();
+                button.classList.toggle("add")
+                loadingImg.classList.toggle("add")
             } else {
-                console.error("Error al agregar el nuevo activo:", response.statusText);
+                console.error("Error al agregar el nuevo activo:", response.statusText);                
+                message("Error al agregar el nuevo activo.","rgb(245 129 150)")
             }
         })
         .catch(error => {
             console.error("Error al agregar el nuevo activo:", error);
+            message("Error al agregar el nuevo activo.","rgb(245 129 150)")
+            button.classList.toggle("add")
+            loadingImg.classList.toggle("add")
         });
     })
     .catch(error => {
         console.error("Error al obtener datos:", error);
+        message("Error al agregar el nuevo activo.","rgb(245 129 150)")
+        button.classList.toggle("add")
+        loadingImg.classList.toggle("add")
     });
 });
 
@@ -135,3 +154,23 @@ function eliminarActivo(key) {
 
 
 document.addEventListener('DOMContentLoaded', cargarActivos);
+
+const containerAdd = document.getElementById("container-act-add")
+const containerList = document.getElementById("container-act-list")
+const formButton = document.getElementById("form-send")
+const containerArrow = document.getElementById("arrow")
+var rotation = 0
+document.getElementById("change").addEventListener('click', async (event) => {
+    containerAdd.classList.toggle("change")
+    containerList.classList.toggle("change")
+})
+
+containerArrow.addEventListener('click', async (event) => {
+    rotation += 360
+    containerArrow.style.transform = `rotate(${rotation}deg)`;
+})
+
+function message(messa,color){
+    document.getElementById("message").innerHTML = `${messa}`
+    document.getElementById("container-message").style = `background-color: ${color}; height: 48px;`
+}

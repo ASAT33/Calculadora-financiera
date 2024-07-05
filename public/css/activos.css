@@ -1,0 +1,111 @@
+#main-content{
+    position: relative;
+}
+
+#change {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#arrow {
+    transition: 1s;
+    transform: rotate(0deg);
+}
+
+#container-act-header {
+    background-color: #333;
+    padding: 5px 15px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+#container-message{
+    transition: 1s;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 0px;
+    /* height: 48px; */
+    font-size: larger;
+}
+
+p{
+    margin-bottom: 0px;
+}
+
+#container-act-add {
+    position: absolute;
+    overflow: hidden;
+    transform: scaleX(1);
+    transform-origin: left;
+    width: -webkit-fill-available;
+    transition: 1s;
+    height: auto;
+    padding-right: 25px;
+}
+
+#container-act-add.change{
+    transform: scaleX(0);
+    pointer-events: none;
+}
+
+#container-act-list{
+    font-size: smaller;
+    position: relative;
+    overflow: hidden;
+    transform: scaleX(0);
+    transform-origin: left;
+    width: -webkit-fill-available;
+    transition: 1s;
+    height: auto;
+    pointer-events: none;
+}
+
+#container-act-list.change{
+    transform: scaleX(1);
+}
+
+#container-button{
+    justify-content: center;
+    display: grid;
+}
+
+#button{
+    transform: scaleY(1);
+    transition: 0.5s;
+    overflow: hidden;
+    width: 131px;
+    height: 38px;
+}
+
+#button.add{
+    pointer-events: none;
+    transform: scaleY(0);
+    width: 0px;
+    height: 0px;
+}
+
+#loading{
+    transition: 1s;
+    transform: scaleY(0);
+    width: 0px;
+    height: 0px;
+}
+
+#loading.add{
+    transform: scaleY(1);
+    width: 40px;
+    height: 40px;
+    animation: loading 0.5s linear infinite;
+}
+
+@keyframes loading {
+    0% { 
+        transform: rotate(0); 
+    }
+    100% { 
+        transform: rotate(360deg);
+    }
+    }

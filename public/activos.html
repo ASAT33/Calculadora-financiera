@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Financiera</title>
+    <link rel="stylesheet" href="/css/activos.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -11,33 +12,49 @@
 
     <header></header>
     <main id="main-content" class="container mt-4">
-        <h2>Agregar Nuevo Activo</h2>
-        <form id="form-nuevo-activo">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
-            <div class="form-group">
-                <label for="categoria">Categoría:</label>
-                <select class="form-control" id="categoria" name="categoria" required>
-                    <option value="mobiliario">Mobiliario</option>
-                    <option value="equipo de oficina">Equipo de Oficina</option>
-                    <option value="vehículo">Vehículo</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="precioCompra">Precio de Compra:</label>
-                <input type="number" class="form-control" id="precioCompra" name="precioCompra" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="fechaAdquisicion">Fecha de Adquisición:</label>
-                <input type="date" class="form-control" id="fechaAdquisicion" name="fechaAdquisicion" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar Activo</button>
-        </form>
 
-        <h2 class="mt-4">Lista de Activos</h2>
-        <div id="tabla-activos" class="mt-4"></div>
+        <div id="container-act-header">
+            <span id="change">
+                <img id="arrow" src="/images/ar.svg" height="40" width="40"/>
+            </span>
+        </div>
+        <div id="container-message">
+            <p id="message"></p>
+        </div>
+        <div id="container-act-add">
+            <h2>Agregar Nuevo Activo</h2>
+            <form id="form-nuevo-activo">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <select class="form-control" id="categoria" name="categoria" required>
+                        <option value="mobiliario">Mobiliario</option>
+                        <option value="equipo de oficina">Equipo de Oficina</option>
+                        <option value="vehículo">Vehículo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="precioCompra">Precio de Compra:</label>
+                    <input type="number" class="form-control" id="precioCompra" name="precioCompra" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaAdquisicion">Fecha de Adquisición:</label>
+                    <input type="date" class="form-control" id="fechaAdquisicion" name="fechaAdquisicion" required>
+                </div>
+                <div class="form-group" id="container-button">
+                    <button type="submit" class="btn btn-primary" id="button">Agregar Activo</button>
+                    <img id="loading" src="/images/loading.svg" height="40" width="40"/>
+                </div>
+            </form>
+        </div>
+
+        <div id="container-act-list">
+            <h2 class="mt-4">Lista de Activos</h2>
+            <div id="tabla-activos" class="mt-4"></div>
+        </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
