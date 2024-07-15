@@ -27,7 +27,6 @@ function actualizarPrecio() {
     const precioVenta = parseFloat(selectedOption.dataset.precioVenta);
     document.getElementById('precio').value = precioVenta.toFixed(2);
 
-    // Calcular monto al cambiar cantidad y precio
     calcularMonto();
 }
 
@@ -114,7 +113,7 @@ registroForm.addEventListener('submit', (e) => {
         }
     });
 
-    // Obtener la longitud del array de ventas
+    //longitud del array de ventas
     fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(ventasData => {
