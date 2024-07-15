@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li class="nav-item"><a class="nav-link" href="/calculadora_intereses.html">Cálculo de Intereses</a></li>
                         <li class="nav-item"><a class="nav-link" href="/proforma_balance.html">Proforma de Balance</a></li>
                         <li class="nav-item"><a class="nav-link" href="/razones_financieras.html">Razones Financieras</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Presupuesto de Caja</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/caja.html">Presupuesto de Caja</a></li>
                         <li class="nav-item"><a class="nav-link" href="/activos.html">Activos Fijos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Punto de Equilibrio</a></li>
                     </ul>

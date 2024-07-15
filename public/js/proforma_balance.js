@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     const resultadoPasivos = mostrarPasivos(comprasData, prestamoData);
                     sumaTotalGlobal = resultadoPasivos.sumaTotal;
                     console.log('Total de pasivos:', sumaTotalGlobal);
+                    const totalActivos = totalAfijosGlobal + totalAcorrienGlobal;
+                    const capital = totalActivos - sumaTotalGlobal;
+                    const capitalElement = document.getElementById('capital');
+                    capitalElement.textContent = `Capital: $${capital.toFixed(2)}`;
+                    const totalcapa = capital+sumaTotalGlobal;
+                    const totalElement = document.getElementById('total');
+                    totalElement.textContent=`total: $${totalcapa.toFixed(2)}`;
                 })
                 .catch(error => console.error('Error al obtener datos de préstamos:', error));
         })
@@ -159,7 +166,7 @@ function mostrarPasivos(comprasData, prestamoData) {
     // cxp
     function calcularPasivoTotal(comprasData) {
         let pasivoTotal = 0;
-        const fechaBalanceGeneral = new Date("2023-12-31"); 
+        const fechaBalanceGeneral = new Date("2023-12-26"); 
         if (Array.isArray(comprasData) && comprasData.length > 0) {
             comprasData.forEach(compra => {
                 const fechaCancelacion = new Date(compra["Fecha de cancelación"]);
@@ -198,7 +205,7 @@ function mostrarPasivos(comprasData, prestamoData) {
 
         const prestamoElement = document.getElementById('prestamo-anual');
         if (prestamoElement) {
-            prestamoElement.innerHTML = `<li>Total del préstamo con intereses: $${pagoAnual}</li>
+            prestamoElement.innerHTML = `
             <li>Cantidad restante: $${cantidadRestante}</li>`;
         } else {
             console.error('Elemento con ID "prestamo-anual" no encontrado.');
@@ -210,14 +217,17 @@ function mostrarPasivos(comprasData, prestamoData) {
         };
     }
     const pasivoTotal = calcularPasivoTotal(comprasData);
+    const { pagoAnual, cantidadRestante } = procesarPrestamos(prestamoData);
     const pasivoTotalElement = document.getElementById('cxp');
     if (pasivoTotalElement) {
-        pasivoTotalElement.innerHTML = `<li>CXP $${pasivoTotal}</li>`;
+        pasivoTotalElement.innerHTML = `<li>CXP $${pasivoTotal}</li>
+        <li>Total del préstamo con intereses: $${pagoAnual}</li>
+        `;
     } else {
         console.error('Elemento con ID "cxp" no encontrado.');
     }
 
-    const { pagoAnual, cantidadRestante } = procesarPrestamos(prestamoData);
+    
 
     const sumaTotal = pasivoTotal + pagoAnual + cantidadRestante;
 
@@ -270,12 +280,11 @@ function mostrarDatos(balanceData) {
     // Mostrar pasivos corrientes y fijos
     const pasivosCorrientesHTML = `
       <li>Cuentas por pagar: $${balanceData.cuentas_por_pagar.toFixed(2)}</li>
-      <li> Préstamos a Corto Plazo: $${balanceData.prestamos_corto_plazo.toFixed(2)}</li>
+      <li>Impuestos(25%): $${balanceData.impuesto.toFixed(2)}</li>
     `;
     document.getElementById('diciembre-cxp').innerHTML = pasivosCorrientesHTML;
   
     const pasivosFijosHTML = `
-      <li>Prestamos a corto plazo: $${balanceData.prestamos_corto_plazo.toFixed(2)}</li>
       <li>Prestamos a largo plazo: $${balanceData.prestamos_largo_plazo.toFixed(2)}</li>
       <li>Total: $${balanceData.total_pasivos.toFixed(2)}</li>
     `;
@@ -294,3 +303,45 @@ function mostrarDatos(balanceData) {
     document.getElementById('diciembre-capital').innerHTML = capitalHTML;
   }
   
+  async function fetchEstadoResultados() {
+    const url = "https://admfinan-52fbd-default-rtdb.firebaseio.com/registros/estadoresltado/diciembre23.json";
+    const response = await fetch(url);
+    const data = await response.json();
+    const tableBody = document.getElementById('estado-resultados-table').getElementsByTagName('tbody')[0];
+
+    const rows = [
+        { concepto: 'Ingresos por ventas', cantidad: data.Ingresos_por_ventas },
+        { concepto: 'Costos de bienes vendidos (COGS)'},
+        { concepto: '- Inventario Inicial', cantidad: data.Inventario_inicial },
+        { concepto: '- Compras', cantidad: data.Compras },
+        { concepto: '- Inventario Final', cantidad: data.Inventario_final },
+        { concepto: 'Total COGS', cantidad: data.Total_COGS },
+        { concepto: 'Ganancia Bruta', cantidad: data.Ganancia_bruta },
+        { concepto: 'Gastos Operativos'},
+        { concepto: '- Servicio de agua', cantidad: data.Servicio_de_agua },
+        { concepto: '- Electricidad', cantidad: data.Electricidad },
+        { concepto: '- Internet', cantidad: data.Internet },
+        { concepto: '- Salarios', cantidad: data.Salarios },
+        { concepto: '- Renta', cantidad: data.Renta },
+        { concepto: '- Publicidad', cantidad: data.Publicidad },
+        { concepto: '- Transporte', cantidad: data.Transporte },
+        { concepto: 'Total Gastos Operativos', cantidad: data.Total_gastos_operativos },
+        { concepto: 'Intereses de préstamos (8%)', cantidad: data.Intereses_de_prestamos },
+        { concepto: 'Utilidad neta antes de impuestos', cantidad: data.Utilidad_neta_antes_de_impuestos },
+        { concepto: 'Impuestos 25%', cantidad: data.Impuestos },
+        { concepto: 'Total', cantidad: data.Utilidad_neta }
+    ];
+
+    rows.forEach(row => {
+        const tr = document.createElement('tr');
+        const tdConcepto = document.createElement('td');
+        const tdCantidad = document.createElement('td');
+        tdConcepto.textContent = row.concepto;
+        tdCantidad.textContent = `$${parseFloat(row.cantidad).toFixed(2)}`;
+        tr.appendChild(tdConcepto);
+        tr.appendChild(tdCantidad);
+        tableBody.appendChild(tr);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', fetchEstadoResultados);
