@@ -11,13 +11,16 @@
     <header>
     </header>
     <main class="container mt-5">
+        <div class="btn-group" role="group">
+        <button class="btn btn-primary mb-3" id="mostrar-form-venta">Registrar Venta</button>
+        <button class="btn btn-primary mb-3" id="">Agregar Producto</button>
+        <button class="btn btn-primary mb-3" id="mostrar-form-compra">Registrar Compra</button>
+        <button onclick="window.location.href='caja.html'" class="btn btn-secondary mb-3">Venta</button></div>
         <h1 id="titulo-presupuesto">Presupuesto de Caja</h1>
         <div class="form-group">
             <label for="seleccion-anio">Seleccione el año:</label>
             <select class="form-control" id="seleccion-anio">
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
+                <option value="">Elija un año</option>
                 <option value="2023">2023</option>
                 <option value="2024">2024</option>
             </select>
@@ -40,11 +43,6 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Botones para mostrar formularios -->
-        <button class="btn btn-primary mb-3" id="mostrar-form-venta">Registrar Venta</button>
-        <button class="btn btn-primary mb-3" id="mostrar-form-compra">Registrar Compra</button>
-
         <!-- Formulario para registrar ventas -->
         <div id="form-venta-container" style="display: none;">
             <h2>Registrar Venta</h2>

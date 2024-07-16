@@ -1,55 +1,85 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let sumaTotalGlobal = 0;
-    let totalAfijosGlobal = 0;
-    let totalAcorrienGlobal = 0;
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
-        .then(response => response.json())
-        .then(data => {
+    async function obtenerDatos() {
+        try {
+            let activosCorrientes, activosFijos;
+            const response1 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosCorrientes.json');
+            activosCorrientes = await response1.json();
+            const response2 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json');
+            activosFijos = await response2.json();
+            const response3 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json');
+            const data = await response3.json();
             let totalMonto = 0;
             data.forEach(venta => {
-                totalMonto += venta.monto;
+                if (venta['Fecha de cancelación'].includes('2024')) {
+                    totalMonto += parseFloat(venta.Cancelación);
+                }
             });
-            const totalMontoElement = document.getElementById('total-monto');
-            totalMontoElement.textContent = `${totalMonto}`;
-        })
-        .catch(error => console.error('Error al obtener datos de ventas anuales:', error));
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosCorrientes.json')
-        .then(response => response.json())
-        .then(activosCorrientes => {
-            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json')
-                .then(response => response.json())
-                .then(activosFijos => {
-                    const { totalAfijos, totalAcorrien } = mostrarActivos(activosCorrientes, activosFijos);
-                    totalAfijosGlobal = totalAfijos;
-                    totalAcorrienGlobal = totalAcorrien;
-                    console.log('Total de activos fijos global:', totalAfijosGlobal);
-                    console.log('Total de activos corrientes global:', totalAcorrienGlobal);
-                })
-                .catch(error => console.error('Error al obtener datos de activos fijos:', error));
-        })
-        .catch(error => console.error('Error al obtener datos de activos corrientes:', error));
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
-        .then(response => response.json())
-        .then(comprasData => {
-            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/prestamo.json')
-                .then(response => response.json())
-                .then(prestamoData => {
-                    const resultadoPasivos = mostrarPasivos(comprasData, prestamoData);
-                    sumaTotalGlobal = resultadoPasivos.sumaTotal;
-                    console.log('Total de pasivos:', sumaTotalGlobal);
-                    const totalActivos = totalAfijosGlobal + totalAcorrienGlobal;
-                    const capital = totalActivos - sumaTotalGlobal;
-                    const capitalElement = document.getElementById('capital');
-                    capitalElement.textContent = `Capital: $${capital.toFixed(2)}`;
-                    const totalcapa = capital+sumaTotalGlobal;
-                    const totalElement = document.getElementById('total');
-                    totalElement.textContent=`total: $${totalcapa.toFixed(2)}`;
-                })
-                .catch(error => console.error('Error al obtener datos de préstamos:', error));
-        })
-        .catch(error => console.error('Error al obtener datos de compras:', error));
+    
+            const totalMontoFormateado = totalMonto.toFixed(2);
+            const activos = mostrarActivos(activosCorrientes, activosFijos, totalMontoFormateado);
+            const totalAfijosGlobal = activos.totalAfijos;
+            const totalAcorrienGlobal = activos.totalAcorrien;
+            return {
+                totalAfijosGlobal,
+                totalAcorrienGlobal
+            };
+    
+        } catch (error) {
+            console.error('Error en obtenerDatos:', error);
+            throw error; 
+        }
+    }
+    
+    async function obtenerDatosPasivos() {
+        try {
+            let sumaTotalGlobal, sumacorr;
+            const response1 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json');
+            const comprasData = await response1.json();
+    
+            const response2 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/prestamo.json');
+            const prestamoData = await response2.json();
 
+            const resultadoPasivos = mostrarPasivos(comprasData, prestamoData);
+            sumaTotalGlobal = resultadoPasivos.sumaTotal;
+            sumacorr = resultadoPasivos.corriente;
 
+            return {
+                sumaTotalGlobal,
+                sumacorr
+            };
+    
+        } catch (error) {
+            console.error('Error en obtenerDatosPasivos:', error);
+            throw error; 
+        }
+    }
+    
+
+    async function obtenerYProcesarDatos() {
+        try {
+            const [datosActivos, datosPasivos] = await Promise.all([
+                obtenerDatos(),
+                obtenerDatosPasivos()
+            ]);
+            const totalAfijosGlobal = datosActivos.totalAfijosGlobal;
+            const totalAcorrienGlobal = datosActivos.totalAcorrienGlobal;
+            const sumaTotalGlobal = datosPasivos.sumaTotalGlobal;
+            const sumacorr = datosPasivos.sumacorr;
+            let totalActivos=totalAfijosGlobal+totalAcorrienGlobal;
+  
+            let capital = totalActivos - sumaTotalGlobal;
+            let pascap = sumaTotalGlobal + capital
+            const totalElement = document.getElementById('total');
+            totalElement.textContent = `$${pascap.toFixed(2)}`;
+
+            const capitalElement = document.getElementById('capital');
+            capitalElement.textContent = `$${capital.toFixed(2)}`;
+
+        } catch (error) {
+            console.error('Error en obtenerYProcesarDatos:', error);
+        }
+    }
+    obtenerYProcesarDatos();
         fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/registros/balances/diciembre23.json')
         .then(response => {
           if (!response.ok) {
@@ -81,39 +111,40 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //mostrar activos
-function mostrarActivos(activosCorrientes, activosFijos) {
+function mostrarActivos(activosCorrientes, activosFijos, totalMontoFormateado) {
     if (!activosCorrientes || !activosFijos) {
         console.error("Los datos de activos no están definidos o están incompletos");
-        return;
+        return null; 
     }
+
+    const cuentasPorCobrar = parseFloat(totalMontoFormateado);
+
     const activosCorrientesElement = document.getElementById('activos-corrientes');
     const activosFijosElement = document.getElementById('activos-fijos');
     const activosTotaleElement = document.getElementById('total-activos');
 
-    const totalAcorrien = activosCorrientes.caja + activosCorrientes.cuentasPorCobrar + activosCorrientes.inventario;
-    let activosCorrientesHTML = `
-        <li>Caja (efectivo): $${activosCorrientes.caja.toFixed(2)}</li>
-        <li>Cuentas por Cobrar: $${activosCorrientes.cuentasPorCobrar.toFixed(2)}</li>
-        <li>Inventario: $${activosCorrientes.inventario.toFixed(2)}</li>
-        <li>Total: $${(totalAcorrien).toFixed(2)}</li>
-    `;
-    
+    let totalAcorrien = 0;
+
+    // Calcular total de activos corrientes
+    if (activosCorrientes.caja !== undefined && activosCorrientes.inventario !== undefined) {
+        totalAcorrien = activosCorrientes.caja + cuentasPorCobrar + activosCorrientes.inventario;
+    }
+
     let totalMobiliario = 0;
     let totalEquipoOficina = 0;
     let totalVehiculos = 0;
     let totalNeto = 0;
     let depreciacionAcumuladaTotal = 0;
 
+    // Calcular activos fijos
     activosFijos.forEach(activo => {
-        if (activo) { // Verificar si el activo existe y no es null
+        if (activo) {
             const { nombre, categoria, precioCompra, fechaAdquisicion } = activo;
 
             const fechaInicial = new Date(fechaAdquisicion);
             const añosEnOperacion = calcularAñosEnOperacion(fechaInicial);
 
-            //  10% depreciacion anual
             const depreciacionAnual = 0.10;
-
             const depreciacionAcumulada = precioCompra * depreciacionAnual * añosEnOperacion;
 
             totalNeto += precioCompra;
@@ -136,29 +167,45 @@ function mostrarActivos(activosCorrientes, activosFijos) {
     });
 
     const totalAfijos = totalNeto - depreciacionAcumuladaTotal;
+
+    // Construir HTML para activos corrientes
+    let activosCorrientesHTML = `
+        <li>Caja (efectivo): $${activosCorrientes.caja.toFixed(2)}</li>
+        <li>Cuentas por Cobrar: $${cuentasPorCobrar.toFixed(2)}</li>
+        <li>Inventario: $${activosCorrientes.inventario.toFixed(2)}</li>
+        <li>Total: $${totalAcorrien.toFixed(2)}</li>
+    `;
+
+    // Construir HTML para activos fijos
     let activosFijosHTML = `
         <li>Mobiliario: $${totalMobiliario.toFixed(2)}</li>
         <li>Equipo de oficina: $${totalEquipoOficina.toFixed(2)}</li>
         <li>Vehículos: $${totalVehiculos.toFixed(2)}</li>
         <li>Total Neto (sin depreciación): $${totalNeto.toFixed(2)}</li>
         <li>Depreciación acumulada total: $${depreciacionAcumuladaTotal.toFixed(2)}</li>
-        <li>Total (con depreciación): $${(totalAfijos).toFixed(2)}</li>
+        <li>Total (con depreciación): $${totalAfijos.toFixed(2)}</li>
     `;
 
-    let totalActivos = activosCorrientes.caja + activosCorrientes.cuentasPorCobrar + activosCorrientes.inventario + (totalNeto - depreciacionAcumuladaTotal);
+    // Construir HTML para total de activos
     let totalActivosHTML = `
-        <li>Total: $${totalActivos.toFixed(2)}</li>
+        <li>Total: $${(totalAcorrien + totalAfijos).toFixed(2)}</li>
     `;
 
+    // Actualizar elementos en la página
     activosCorrientesElement.innerHTML = activosCorrientesHTML;
     activosFijosElement.innerHTML = activosFijosHTML;
     activosTotaleElement.innerHTML = totalActivosHTML;
 
+    // Devolver un objeto con todos los valores relevantes
     return {
         totalAfijos: totalAfijos,
-        totalAcorrien: totalAcorrien
+        totalAcorrien: totalAcorrien,
+        totalNeto: totalNeto,
+        depreciacionAcumuladaTotal: depreciacionAcumuladaTotal,
+        totalActivos: totalAcorrien + totalAfijos
     };
 }
+
 
 
 //mostrar pasivos
@@ -228,9 +275,9 @@ function mostrarPasivos(comprasData, prestamoData) {
     }
 
     
-
-    const sumaTotal = pasivoTotal + pagoAnual + cantidadRestante;
-
+    
+    const corriente = pasivoTotal + pagoAnual;
+    const sumaTotal = corriente + cantidadRestante;
     const sumaTotalElement = document.getElementById('suma-total');
     if (sumaTotalElement) {
         sumaTotalElement.textContent = `Suma Total: $${sumaTotal}`;
@@ -239,9 +286,12 @@ function mostrarPasivos(comprasData, prestamoData) {
     }
 
     return {
+        corriente:corriente,
         sumaTotal: sumaTotal
     };
 }
+
+
 
 function calcularAñosEnOperacion(fechaInicial) {
     const fechaActual = new Date();
@@ -249,6 +299,9 @@ function calcularAñosEnOperacion(fechaInicial) {
     const añosEnMilisegundos = 1000 * 60 * 60 * 24 * 365; // en milisegundos
     return Math.floor(tiempoEnMilisegundos / añosEnMilisegundos);
 }
+
+
+//diciembre
 
 function mostrarDatos(balanceData) {
     // Mostrar activos corrientes
