@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="e">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto de Caja</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main class="container mt-5">
+        <h1 id="titulo-presupuesto">Presupuesto de Caja</h1>
+        <div class="form-group">
+            <label for="seleccion-anio">Seleccione el año:</label>
+            <select class="form-control" id="seleccion-anio">
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead id="tabla-encabezado">
+                    <tr>
+                        <th>Mes</th>
+                        <th>Ventas</th>
+                        <th>Compras</th>
+                        <th>Gastos Operativos</th>
+                        <th>Flujo Efectivo Neto</th>
+                        <th>Efectivo Inicial</th>
+                        <th>Efectivo Final</th>
+                        <th>Efectivo Restante</th>
+                    </tr>
+                </thead>
+                <tbody id="presupuesto-caja-body">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botones para mostrar formularios -->
+        <button class="btn btn-primary mb-3" id="mostrar-form-venta">Registrar Venta</button>
+        <button class="btn btn-primary mb-3" id="mostrar-form-compra">Registrar Compra</button>
+
+        <!-- Formulario para registrar ventas -->
+        <div id="form-venta-container" style="display: none;">
+            <h2>Registrar Venta</h2>
+            <form id="form-venta">
+                <div class="form-group">
+                    <label for="producto-venta">Producto:</label>
+                    <select class="form-control" id="producto-venta">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cantidad-venta">Cantidad:</label>
+                    <input type="number" class="form-control" id="cantidad-venta">
+                </div>
+                <div class="form-group">
+                    <label for="fecha-venta">Fecha:</label>
+                    <input type="date" class="form-control" id="fecha-venta">
+                </div>
+                <div class="form-group">
+                    <label for="credito-venta">Se otorga crédito:</label>
+                    <select class="form-control" id="credito-venta">
+                        <option value="no">No</option>
+                        <option value="sí">Sí</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="abono-venta">Abono (50%):</label>
+                    <input type="number" class="form-control" id="abono-venta">
+                </div>
+                <div class="form-group">
+                    <label for="fecha-cancelacion-venta">Fecha de cancelación:</label>
+                    <input type="date" class="form-control" id="fecha-cancelacion-venta">
+                </div>
+                <div class="form-group">
+                    <label for="cancelacion-venta">Cancelación:</label>
+                    <input type="number" class="form-control" id="cancelacion-venta">
+                </div>
+                <button type="button" class="btn btn-primary" id="registrar-venta">Registrar Venta</button>
+            </form>
+        </div>
+
+        <!-- Formulario para registrar compras -->
+        <div id="form-compra-container" style="display: none;">
+            <h2>Registrar Compra</h2>
+            <form id="form-compra">
+                <div class="form-group">
+                    <label for="producto-compra">Producto:</label>
+                    <select class="form-control" id="producto-compra">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cantidad-compra">Cantidad:</label>
+                    <input type="number" class="form-control" id="cantidad-compra">
+                </div>
+                <div class="form-group">
+                    <label for="abono-compra">Abono:</label>
+                    <input type="number" class="form-control" id="abono-compra">
+                </div>
+                <div class="form-group">
+                    <label for="fecha-compra">Fecha:</label>
+                    <input type="date" class="form-control" id="fecha-compra">
+                </div>
+                <div class="form-group">
+                    <label for="fecha-cancelacion-compra">Fecha de cancelación:</label>
+                    <input type="date" class="form-control" id="fecha-cancelacion-compra">
+                </div>
+                <div class="form-group">
+                    <label for="cancelacion-compra">Cancelación:</label>
+                    <input type="number" class="form-control" id="cancelacion-compra">
+                </div>
+                <button type="button" class="btn btn-primary" id="registrar-compra">Registrar Compra</button>
+            </form>
+        </div>
+
+        <!-- Sección de reportes -->
+        <h2>Reportes</h2>
+        <div id="reportes-container">
+            <div class="form-group">
+                <label for="tipo-reporte">Seleccione el tipo de reporte:</label>
+                <select class="form-control" id="tipo-reporte">
+                    <option value="ventas">Ventas</option>
+                    <option value="compras">Compras</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mes-reporte">Seleccione el mes:</label>
+                <select class="form-control" id="mes-reporte">
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="anio-reporte">Seleccione el año:</label>
+                <select class="form-control" id="anio-reporte">
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+            <button class="btn btn-primary mb-3" id="mostrar-reportes">Mostrar Reportes</button>
+            <div id="reportes" style="display: none;">
+                <h3 id="reporte-titulo">Reporte de Ventas</h3>
+                <table class="table table-striped">
+                    <thead id="reporte-encabezado">
+                    </thead>
+                    <tbody id="reportes-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./js/presupuesto_caja.js"></script>
+    <script src="./js/utils.js"></script>
+</body>
+</html>
