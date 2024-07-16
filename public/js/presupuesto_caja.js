@@ -41,7 +41,7 @@ const registrarVenta = async function() {
     const cancelacion = parseFloat(document.getElementById('cancelacion-venta').value);
     const newAsset = {
         "fecha": fecha,
-        "transacción": 0, // Esto se actualizará después
+        "transacción": 0, 
         "Producto": productoSeleccionado.Código,
         "Cantidad": cantidad,
         "Precio": parseFloat(productoSeleccionado["Precio de venta"].replace("$", "")),
