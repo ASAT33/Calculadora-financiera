@@ -248,31 +248,36 @@ const fetchData = async function() {
     await fetchProductos();
 
     await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
-        .then(response => response.json())
-        .then(data => {
-            ventasAnuales = data;
-            let ventasMeses = [];
-            let fechaAnterior;
-            data.forEach(venta => {
-                let flag = false;
-                const fechaArray = new Date(venta["fecha"]);
-                ventasMeses.forEach(item => {
-                    if (item.year == fechaArray.getUTCFullYear() && item.month == fechaArray.getUTCMonth() + 1) {
-                        item.total += venta["monto"];
-                        flag = true;
-                    }
-                });
-                if (fechaAnterior == undefined || flag == false || fechaAnterior.getUTCFullYear() != fechaArray.getUTCFullYear() || fechaAnterior.getUTCMonth() != fechaArray.getUTCMonth()) {
-                    fechaAnterior = fechaArray;
-                    let ventas = {};
-                    ventas["total"] = venta["monto"];
-                    ventas["year"] = fechaArray.getUTCFullYear();
-                    ventas["month"] = fechaArray.getUTCMonth() + 1;
-                    ventasMeses.push(ventas);
+    .then(response => response.json())
+    .then(data => {
+        ventasAnuales = data;
+        let ventasMeses = [];
+        let fechaAnterior;
+
+        data.forEach(venta => {
+            let flag = false;
+            const fechaArray = new Date(venta["fecha"]);
+
+            ventasMeses.forEach(item => {
+                if (item.year == fechaArray.getUTCFullYear() && item.month == fechaArray.getUTCMonth() + 1) {
+                    item.total += (venta["Abono (50%)"] + (venta["Fecha de cancelación"] <= '2023-12-31' ? venta["Cancelación"] : 0));
+                    flag = true;
                 }
             });
-            ventasXMesA = ventasMeses;
-        }).catch(error => console.error('Error al obtener datos de ventas anuales:', error));
+
+            if (fechaAnterior == undefined || flag == false || fechaAnterior.getUTCFullYear() != fechaArray.getUTCFullYear() || fechaAnterior.getUTCMonth() != fechaArray.getUTCMonth()) {
+                fechaAnterior = fechaArray;
+                let ventas = {};
+                ventas["total"] = venta["Abono (50%)"] + (venta["Fecha de cancelación"] <= '2023-12-31' ? venta["Cancelación"] : 0);
+                ventas["year"] = fechaArray.getUTCFullYear();
+                ventas["month"] = fechaArray.getUTCMonth() + 1;
+                ventasMeses.push(ventas);
+            }
+        });
+
+        ventasXMesA = ventasMeses;
+    })
+    .catch(error => console.error('Error al obtener datos de ventas anuales:', error));
 
     await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
         .then(response => response.json())
@@ -382,6 +387,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <th>Flujo Efectivo Neto</th>
                     <th>Efectivo Inicial</th>
                     <th>Efectivo Final</th>
+                    <th>Saldo minimo efectivo</th>
                     <th>Efectivo Restante</th>
                 </tr>
             `;
@@ -402,6 +408,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <td>${flujoEfectivoNeto.toFixed(2)}</td>
                     <td>${efectivoInicial.total ? efectivoInicial.total.toFixed(2) : '0.00'}</td>
                     <td>${efectivoFinal.total ? efectivoFinal.total.toFixed(2) : '0.00'}</td>
+                    <td>${'900'}</td>
                     <td>${restante.total ? restante.total.toFixed(2) : '0.00'}</td>
                 `;
                 presupuestoCajaBody.appendChild(row);
