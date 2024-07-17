@@ -10,27 +10,32 @@ let efectivoFinalXMesA = [];
 let efectivoRestante = [];
 
 const fetchProductos = async function() {
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
-        .then(response => response.json())
-        .then(data => {
-            productos = data;
-            llenarSelectProductos();
-        })
-        .catch(error => console.error('Error al obtener productos:', error));
+    try {
+        const response = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json');
+        const data = await response.json();
+        productos = data;
+        llenarSelectProductos();
+    } catch (error) {
+        console.error('Error al obtener productos:', error);
+    }
 };
 
 const llenarSelectProductos = function() {
     const selectVenta = document.getElementById('producto-venta');
     const selectCompra = document.getElementById('producto-compra');
-    productos.forEach(producto => {
-        const option = document.createElement('option');
-        option.value = producto.Código;
-        option.text = producto.Descripción;
-        selectVenta.add(option.cloneNode(true));
-        selectCompra.add(option.cloneNode(true));
-    });
+    if (selectVenta && selectCompra) {
+        productos.forEach(producto => {
+            const option = document.createElement('option');
+            option.value = producto.Código;
+            option.text = producto.Descripción;
+            selectVenta.add(option.cloneNode(true));
+            selectCompra.add(option.cloneNode(true));
+        });
+    }
 };
 
+// Código comentado relacionado con el registro de ventas
+/*
 const registrarVenta = async function() {
     const productoSeleccionado = productos.find(producto => producto.Código == document.getElementById('producto-venta').value);
     const cantidad = parseFloat(document.getElementById('cantidad-venta').value);
@@ -80,7 +85,10 @@ const registrarVenta = async function() {
             console.error("Error al obtener datos:", error);
         });
 };
+*/
 
+// Código comentado relacionado con el registro de compras
+/*
 const registrarCompra = async function() {
     const productoSeleccionado = productos.find(producto => producto.Código == document.getElementById('producto-compra').value);
     const cantidad = parseFloat(document.getElementById('cantidad-compra').value);
@@ -126,6 +134,7 @@ const registrarCompra = async function() {
             console.error("Error al obtener datos:", error);
         });
 };
+*/
 
 const actualizarTabla = function(newAsset, tipo) {
     const fecha = new Date(newAsset.fecha || newAsset.Fecha);
@@ -156,89 +165,6 @@ const actualizarTabla = function(newAsset, tipo) {
                 celdas[6].textContent = efectivoFinal.toFixed(2);
                 const efectivoRestante = efectivoFinal - 900; 
                 celdas[7].textContent = efectivoRestante.toFixed(2);
-            }
-        });
-    }
-};
-
-const mostrarReportes = function() {
-    const reportesBody = document.getElementById('reportes-body');
-    const tipoReporte = document.getElementById('tipo-reporte').value;
-    const mesReporte = parseInt(document.getElementById('mes-reporte').value);
-    const anioReporte = parseInt(document.getElementById('anio-reporte').value);
-    const reporteTitulo = document.getElementById('reporte-titulo');
-    const reporteEncabezado = document.getElementById('reporte-encabezado');
-    reportesBody.innerHTML = '';
-    reporteEncabezado.innerHTML = '';
-
-    if (tipoReporte === 'ventas') {
-        reporteTitulo.textContent = `Reporte de Ventas ${anioReporte}`;
-        reporteEncabezado.innerHTML = `
-            <tr>
-                <th>Fecha</th>
-                <th>Transacción</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Monto</th>
-                <th>Se otorga crédito</th>
-                <th>Abono</th>
-                <th>Fecha de cancelación</th>
-                <th>Cancelación</th>
-            </tr>
-        `;
-        ventasAnuales.forEach(venta => {
-            const fecha = new Date(venta.fecha);
-            const mes = fecha.getUTCMonth() + 1;
-            const anio = fecha.getUTCFullYear();
-            if (mes === mesReporte && anio === anioReporte) {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${venta.fecha}</td>
-                    <td>${venta.transacción}</td>
-                    <td>${venta.Producto}</td>
-                    <td>${venta.Cantidad}</td>
-                    <td>${venta.Precio.toFixed(2)}</td>
-                    <td>${venta.monto.toFixed(2)}</td>
-                    <td>${venta["Se otorga crédito"]}</td>
-                    <td>${venta["Abono (50%)"].toFixed(2)}</td>
-                    <td>${venta["Fecha de cancelación"]}</td>
-                    <td>${venta.Cancelación.toFixed(2)}</td>
-                `;
-                reportesBody.appendChild(row);
-            }
-        });
-    } else if (tipoReporte === 'compras') {
-        reporteTitulo.textContent = `Reporte de Compras ${anioReporte}`;
-        reporteEncabezado.innerHTML = `
-            <tr>
-                <th>Fecha</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Costo unitario</th>
-                <th>Total</th>
-                <th>Abono</th>
-                <th>Fecha de cancelación</th>
-                <th>Cancelación</th>
-            </tr>
-        `;
-        comprasAnuales.forEach(compra => {
-            const fecha = new Date(compra.Fecha);
-            const mes = fecha.getUTCMonth() + 1;
-            const anio = fecha.getUTCFullYear();
-            if (mes === mesReporte && anio === anioReporte) {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${compra.Fecha}</td>
-                    <td>${compra.Producto}</td>
-                    <td>${compra.Cantidad}</td>
-                    <td>${parseFloat(compra["Costo unitario"]).toFixed(2)}</td>
-                    <td>${parseFloat(compra.Total).toFixed(2)}</td>
-                    <td>${parseFloat(compra.Abono).toFixed(2)}</td>
-                    <td>${compra["Fecha de cancelación"]}</td>
-                    <td>${parseFloat(compra.Cancelación).toFixed(2)}</td>
-                `;
-                reportesBody.appendChild(row);
             }
         });
     }
@@ -419,35 +345,32 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    document.getElementById('seleccion-anio').addEventListener('change', function() {
-        const anioSeleccionado = parseInt(this.value);
-        mostrarDatos(anioSeleccionado);
-    });
-
-    // Manejar el registro de ventas
-    document.getElementById('registrar-venta').addEventListener('click', registrarVenta);
-
-    // Manejar el registro de compras
-    document.getElementById('registrar-compra').addEventListener('click', registrarCompra);
+    const seleccionAnio = document.getElementById('seleccion-anio');
+    if (seleccionAnio) {
+        seleccionAnio.addEventListener('change', function() {
+            const anioSeleccionado = parseInt(this.value);
+            mostrarDatos(anioSeleccionado);
+        });
+    }
 
     // Mostrar y ocultar formularios
-    document.getElementById('mostrar-form-venta').addEventListener('click', function() {
-        const formContainer = document.getElementById('form-venta-container');
-        formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
-    });
+    const mostrarFormVenta = document.getElementById('mostrar-form-venta');
+    if (mostrarFormVenta) {
+        mostrarFormVenta.addEventListener('click', function() {
+            const formContainer = document.getElementById('form-venta-container');
+            if (formContainer) {
+                formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+    }
 
-    document.getElementById('mostrar-form-compra').addEventListener('click', function() {
-        const formContainer = document.getElementById('form-compra-container');
-        formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
-    });
-
-    // Mostrar y ocultar reportes
-    document.getElementById('mostrar-reportes').addEventListener('click', function() {
-        const reportesContainer = document.getElementById('reportes');
-        reportesContainer.style.display = reportesContainer.style.display === 'none' ? 'block' : 'none';
-        if (reportesContainer.style.display === 'block') {
-            mostrarReportes();
-        }
-    });
-
+    const mostrarFormCompra = document.getElementById('mostrar-form-compra');
+    if (mostrarFormCompra) {
+        mostrarFormCompra.addEventListener('click', function() {
+            const formContainer = document.getElementById('form-compra-container');
+            if (formContainer) {
+                formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+    }
 });
