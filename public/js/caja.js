@@ -113,7 +113,6 @@ registroForm.addEventListener('submit', (e) => {
         }
     });
 
-    //longitud del array de ventas
     fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(ventasData => {
@@ -134,7 +133,7 @@ registroForm.addEventListener('submit', (e) => {
                     registroForm.reset();
                     document.getElementById('fecha').value = formattedDate;
                     actualizarPrecio();
-                    cargarCreditosAnuales() ; // cargar créditos después de registrar una nueva venta
+                    cargarCreditosAnuales() ; 
                 } else {
                     throw new Error('Error al registrar la venta');
                 }
@@ -147,21 +146,21 @@ registroForm.addEventListener('submit', (e) => {
         .catch(error => console.error('Error al obtener la longitud de las ventas:', error));
 });
 function cargarCreditosAnuales() {
-    const yearActual = new Date().getFullYear(); // Obtener el año actual del sistema
+    const yearActual = new Date().getFullYear(); 
 
     fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(data => {
-            const tbody = document.querySelector('table tbody');
-            tbody.innerHTML = ''; // Limpiar la tabla
+            const tbody = document.querySelector('#tabla-creditos tbody');
+            tbody.innerHTML = ''; 
 
             Object.values(data).forEach(venta => {
-                // Verificar si se otorgó crédito y si la fecha de cancelación está definida
+                // verificar si se otorgó crédito y si la fecha de cancelación está definida
                 if (venta['Se otorga crédito'] === 'si' && venta['Fecha de cancelación']) {
                     const fechaCancelacion = new Date(venta['Fecha de cancelación']);
                     const yearVenta = fechaCancelacion.getFullYear();
                     
-                    // Filtrar solo las ventas del año actual
+                    // filtrar solo las ventas del año actual
                     if (yearVenta === yearActual) {
                         const row = document.createElement('tr');
                         row.innerHTML = `
@@ -181,7 +180,6 @@ function cargarCreditosAnuales() {
                 }
             });
 
-            // Agregar listeners a los botones de cancelar
             const botonesCancelar = document.querySelectorAll('.btn-cancelar');
             botonesCancelar.forEach(boton => {
                 boton.addEventListener('click', () => {
@@ -192,6 +190,7 @@ function cargarCreditosAnuales() {
         })
         .catch(error => console.error('Error al cargar créditos:', error));
 }
+
 
 function cancelarPagarMitad(ventaId) {
     fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`)
@@ -215,7 +214,6 @@ function cancelarPagarMitad(ventaId) {
             .then(response => {
                 if (response.ok) {
                     alert('Cancelación actualizada correctamente.');
-                    // Volver a cargar la lista de créditos después de la actualización
                     cargarCreditosAnuales();
                 } else {
                     throw new Error('Error al actualizar la cancelación.');
@@ -229,32 +227,33 @@ function cancelarPagarMitad(ventaId) {
         .catch(error => console.error('Error al obtener la venta:', error));
 }
 
-// Cargar créditos al cargar la página
+// carga créditos al cargar la página
 document.addEventListener('DOMContentLoaded', cargarCreditosAnuales)
 
-// Función para agregar un nuevo producto
 const agregarProductoForm = document.getElementById('agregarProductoForm');
 
 agregarProductoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const formData = new FormData(agregarProductoForm);
+    
+    const codigo = agregarProductoForm.querySelector('#codigo').value;
+    const descripcion = agregarProductoForm.querySelector('#descripcion').value;
+    const costo = `$${agregarProductoForm.querySelector('#costo').value}`;
+    const precio_venta = `$${agregarProductoForm.querySelector('#precio_venta').value}`;
 
-    const nuevoProducto = {};
-    formData.forEach((value, key) => {
-        nuevoProducto[key] = value;
-    });
+    const nuevoProducto = {
+        Código: codigo,
+        Descripción: descripcion,
+        'Costo unitario': costo,
+        'Precio de venta': precio_venta
+    };
 
-    // Obtener la longitud actual de la colección de productos
     fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
         .then(response => response.json())
         .then(productosData => {
             const productosArray = Object.values(productosData);
             const longitud = productosArray.length;
-
-            // Calcular el ID del nuevo producto
             const nuevoId = longitud;
 
-            // Agregar el nuevo producto usando PATCH
             fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${nuevoId}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify(nuevoProducto),
@@ -266,6 +265,7 @@ agregarProductoForm.addEventListener('submit', (e) => {
                 if (response.ok) {
                     alert('Producto agregado correctamente');
                     agregarProductoForm.reset();
+                    cargarProductos();
                 } else {
                     throw new Error('Error al agregar el producto');
                 }
@@ -276,4 +276,59 @@ agregarProductoForm.addEventListener('submit', (e) => {
             });
         })
         .catch(error => console.error('Error al obtener la longitud de productos:', error));
+});
+
+function cargarProductos() {
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('#tabla-productos tbody');
+            tbody.innerHTML = ''; // Limpiar la tabla
+
+            Object.entries(data).forEach(([key, producto]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${producto.Código}</td>
+                    <td>${producto.Descripción}</td>
+                    <td>${producto['Costo unitario']}</td>
+                    <td>${producto['Precio de venta']}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm btn-borrar" data-producto-id="${key}">Borrar</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+
+                // Agregar evento de click al botón de borrar
+                const btnBorrar = row.querySelector('.btn-borrar');
+                btnBorrar.addEventListener('click', () => {
+                    const productoId = btnBorrar.getAttribute('data-producto-id');
+                    eliminarProducto(productoId);
+                });
+            });
+        })
+        .catch(error => console.error('Error al cargar productos:', error));
+}
+
+// Función para eliminar un producto por su ID
+function eliminarProducto(productoId) {
+    if (!confirm('¿Está seguro de eliminar este producto?')) {
+        return;
+    }
+
+    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${productoId}.json`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Producto eliminado correctamente');
+            cargarProductos(); 
+        } else {
+            throw new Error('Error al eliminar el producto');
+        }
+    })
+    .catch(error => console.error('Error al eliminar el producto:', error));
+}
+document.addEventListener('DOMContentLoaded', () => {
+    cargarProductos();
+    cargarCreditosAnuales();
 });

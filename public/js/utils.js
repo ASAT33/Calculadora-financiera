@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li class="nav-item"><a class="nav-link" href="/presupuesto_caja.html">Presupuesto de Caja</a></li>
                         <li class="nav-item"><a class="nav-link" href="/caja.html">venta2</a></li>
                         <li class="nav-item"><a class="nav-link" href="/activos.html">Activos Fijos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Punto de Equilibrio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/compras.html">Punto de Equilibrio</a></li>
                     </ul>
                 </nav>
             </div>
