@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="icon" href="./images/mileto-icon.ico">
+    <title>Punto de Equilibrio</title>
+</head>
+<body class="bg-gray-100">
+<!-- Navbar -->
+<nav class="bg-slate-700 text-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-5">
+        <!-- Logo and Title -->
+        <div class="flex items-center space-x-2">
+            <img src="images/milano-icon-pequeño.png" alt="Logo" class="h-8 w-8">
+            <span class="text-3xl font-bold">Mileto</span>
+        </div>
+        <!-- Navbar Items (hidden on small screens) -->
+        <div class="hidden md:flex space-x-4">
+            <a href="principal.html" class="hover:text-yellow-600">Inicio</a>
+            <a href="#" class="hover:text-yellow-600">Nosotros</a>
+            <a href="#" class="hover:text-yellow-600">Github</a>
+        </div>
+        <!-- Hamburger Menu (visible on small screens) -->
+        <div class="md:hidden">
+            <button id="menu-btn" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden">
+        <a href="principal.html" class="block px-4 py-2 hover:bg-yellow-600">Inicio</a>
+        <a href="#" class="block px-4 py-2 hover:bg-yellow-600">Nosotros</a>
+        <a href="#" class="block px-4 py-2 hover:bg-yellow-600">Github</a>
+    </div>
+</nav>
+
+<!-- Calculadora de Punto de Equilibrio -->
+<div class="container mx-auto mt-8 p-8">
+    <!-- Selección -->
+    <!-- Botones de selección -->
+    <div class="mt-8 p-6 bg-gray-600 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-100">Selecciona el tipo de cálculo</h2>
+        <div class="flex space-x-4">
+            <button id="normal-btn" class="text-black px-4 py-2 rounded hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Normal</button>
+            <button id="multiple-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Múltiples Versiones</button>
+            <button id="services-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Servicios</button>
+        </div>
+    </div>
+    <!-- Formulario Normal -->
+    <div id="normal-form" class="bg-white rounded-lg shadow-md p-8 hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Cálculo de Punto de Equilibrio Normal</h2>
+      <form>
+        <div class="mb-4">
+          <label for="fixed-costs-normal" class="block text-gray-700">Costos Fijos (CF):</label>
+          <input type="number" id="fixed-costs-normal" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mb-4">
+          <label for="price-per-unit-normal" class="block text-gray-700">Precio de Venta por Unidad (PV):</label>
+          <input type="number" id="price-per-unit-normal" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mb-4">
+          <label for="variable-costs-normal" class="block text-gray-700">Costos Variables por Unidad (CVU):</label>
+          <input type="number" id="variable-costs-normal" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mt-8 flex justify-center">
+          <button type="button" id="calculate-normal" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Calcular</button>
+        </div>
+      </form>
+      <!-- Resultado -->
+      <div id="results-normal" class="mt-8 hidden bg-green-100 p-4 rounded-lg">
+        <p id="break-even-units-normal" class="text-gray-800 font-semibold"></p>
+        <p id="break-even-sales-normal" class="text-gray-800 font-semibold"></p>
+      </div>
+    </div>
+  
+    <!-- Formulario Múltiples Versiones -->
+    <div id="multiple-form" class="bg-white rounded-lg shadow-md p-8 hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Cálculo de Punto de Equilibrio para Múltiples Versiones</h2>
+      <form>
+        <div class="mb-4">
+          <label for="fixed-costs-multiple" class="block text-gray-700">Costos Fijos (CF):</label>
+          <input type="number" id="fixed-costs-multiple" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mb-4">
+          <label for="price-per-unit-multiple" class="block text-gray-700">Precio de Venta Promedio (PV):</label>
+          <input type="number" id="price-per-unit-multiple" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mb-4">
+          <label for="variable-costs-multiple" class="block text-gray-700">Costos Variables Promedio (CVU):</label>
+          <input type="number" id="variable-costs-multiple" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mt-8 flex justify-center">
+          <button type="button" id="calculate-multiple" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Calcular</button>
+        </div>
+      </form>
+      <!-- Resultado -->
+      <div id="results-multiple" class="mt-8 hidden bg-green-100 p-4 rounded-lg">
+        <p id="break-even-units-multiple" class="text-gray-800 font-semibold"></p>
+        <p id="break-even-sales-multiple" class="text-gray-800 font-semibold"></p>
+      </div>
+    </div>
+  
+    <!-- Formulario Servicios -->
+    <div id="services-form" class="bg-white rounded-lg shadow-md p-8 hidden">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Cálculo de Punto de Equilibrio para Servicios</h2>
+      <form>
+        <div class="mb-4">
+          <label for="fixed-costs-services" class="block text-gray-700">Costos Fijos (CF):</label>
+          <input type="number" id="fixed-costs-services" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mb-4">
+          <label for="average-price-services" class="block text-gray-700">Precio Promedio del Servicio (PV):</label>
+          <input type="number" id="average-price-services" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mb-4">
+          <label for="average-variable-costs-services" class="block text-gray-700">Costos Variables Promedio (CVU):</label>
+          <input type="number" id="average-variable-costs-services" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+        </div>
+        <div class="mt-8 flex justify-center">
+          <button type="button" id="calculate-services" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Calcular</button>
+        </div>
+      </form>
+      <!-- Resultado -->
+      <div id="results-services" class="mt-8 hidden bg-green-100 p-4 rounded-lg">
+        <p id="break-even-units-services" class="text-gray-800 font-semibold"></p>
+        <p id="break-even-sales-services" class="text-gray-800 font-semibold"></p>
+      </div>
+    </div>
+</div>
+
+<button id="services-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Servicios</button>
+<script src="./js/punto-equilibrio.js"></script>
+</body>
+</html>

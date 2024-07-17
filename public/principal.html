@@ -3,22 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="icon" href="./images/mileto-icon.ico">
     <title>Calculadora Financiera</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<!-- 
+COLORES 
+DORADO : #CD8A04
+-->
 <body>
+    <!-- Navbar -->
+    <nav class="bg-slate-700 text-white shadow-md">
+      <div class="container mx-auto flex justify-between items-center p-5">
+        <!-- Logo and Title -->
+        <div class="flex items-center space-x-2">
+          <img src="images/milano-icon-pequeño.png" alt="Logo" class="h-8 w-8">
+          <span class="text-3xl font-bold">Mileto</span>
+        </div>
+        <!-- Navbar Items (hidden on small screens) -->
+        <div class="hidden md:flex space-x-4">
+          <a href="principal.html" class="hover:text-yellow-600">Inicio</a>
+          <a href="#" class="hover:text-yellow-600">Nosotros</a>
+          <a href="#" class= "hover:text-yellow-600">Github</a>
+        </div>
+        <!-- Hamburger Menu (visible on small screens) -->
+        <div class="md:hidden">
+          <button id="menu-btn" class="focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu (hidden by default) -->
+      <div id="mobile-menu" class="md:hidden hidden">
+        <a href="principal.html" class="block px-4 py-2 hover:bg-yellow-600">Inicio</a>
+        <a href="#" class="block px-4 py-2 hover:bg-yellow-600">Nosotros</a>
+        <a href="#" class="block px-4 py-2 hover:bg-yellow-600">Github</a>
+      </div>
+    </nav>
 
-    <header></header>
-    <main id="main-content" class="container mt-4">
-       <h1>Bienvenido</h1>
+    <!-- Body -->
+  <div class="container mx-auto my-8 p-8">
+    <!-- Mensaje de Bienvenida -->
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Bienvenido a <span class="text-yellow-600">Mileto</span></h1>
+    <!-- Subtitulo -->
+    <h2 id="subtitle" class="text-xl font-semibold text-gray-600 mb-8">Calculadora de <span class="text-yellow-600 font-semibold">Administración Financiera</span> para tu negocio </h2>
+    
+    <!-- Sección de Cards -->
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <a href="#" class="block w-full h-full">
+                <img src="./images/intereses-icon.svg" alt="Card Image" class="w-full h-40 object-contain">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Cálculo de Intereses</h3>
+                    <p class="text-gray-600">Determina el costo o ganancia generada por el uso de capital prestado o invertido</p>
+                </div>
+            </a>
+        </div>
 
-    </main>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="../js/utils.js"></script>
-     
+        <!-- Card 2 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <a href="#" class="block w-full h-full">
+            <img src="./images/proforma-icon.svg" alt="Card Image" class="w-full h-40 object-contain">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Proforma de Balance</h3>
+                <p class="text-gray-600">Muestra las estimaciones futuras de los activos, pasivos y patrimonio de una empresa, <span class="font-semibold">útil para planificar y evaluar el desempeño financiero.</span></p>
+            </div>
+            </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <a href="#" class="block w-full h-full">
+            <img src="./images/razones-financieras-icon.svg" alt="Card Image" class="w-full h-40 object-contain">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Análisis de Razones Financieras</h3>
+                <p class="text-gray-600">indicadores que permiten analizar la salud financiera de una empresa, evaluando aspectos como <span class="font-semibold">la liquidez, la rentabilidad y la solvencia.</span></p>
+            </div>
+            </a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <a href="#" class="block w-full h-full">
+            <img src="./images/presupuesto-caja-icon.svg" alt="Card Image" class="w-full h-40 object-contain">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Registro de Presupuesto de Caja</h3>
+                <p class="text-gray-600"> Plan de los ingresos y egresos de efectivo esperados durante un <span class="font-semibold">período específico.</span></p>
+            </div>
+            </a>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <a href="#" class="block w-full h-full">
+            <img src="./images/activos-fijos-icon.svg" alt="Card Image" class="w-full h-40 object-contain">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Cálculo Activos Fijos</h3>
+                <p class="text-gray-600">Calcula los bienes tangibles de tu negocio con una vida útil prolongada y destinados a generar ingresos a largo plazo.</p>
+            </div>
+            </a>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <a href="punto-equilibrio.html" class="block w-full h-full">
+            <img src="./images/punto-equilibrio-icon.svg" alt="Card Image" class="w-full h-40 object-contain">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Punto de Equilibrio</h3>
+                <p class="text-gray-600">Calcula el nivel mínimo de actividad necesario para evitar pérdidas y comenzar a generar utilidades.</p>
+            </div>
+            </a>
+        </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-slate-700 text-white py-8 mt-8">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <!-- Logo and Description -->
+      <div class="flex items-center space-x-2">
+        <img src="images/milano-icon-pequeño.png" alt="Logo" class="h-8 w-8">
+        <span class="text-2xl font-bold">Mileto</span>
+      </div>
+      <p class="text-center md:text-left text-gray-400">Tu herramienta de confianza para cálculos financieros precisos y rápidos.</p>
+      
+      <!-- Social Media Links -->
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-400 hover:text-yellow-600">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.04c-5.49 0-9.96 4.47-9.96 9.96 0 4.41 2.87 8.16 6.84 9.5-.03-.84-.07-2.14.02-3.05.09-.97.6-1.62 1.23-2.24-.74-.08-1.63-.33-2.08-1.28-.33-.72-.82-1.22-.47-1.67 1.41.01 2.32.98 2.44 1.34.55 1.48 1.63 1.82 2.37 1.85.13-1.12.46-2.02.84-2.44-2.41-.28-4.43-1.23-4.43-4.65 0-1.03.37-1.88 1.03-2.54-.29-.57-1.32-1.41-.1-2.86 1.27-.01 2.23.85 2.42 1.06.69-.19 1.43-.3 2.18-.3-.06.35.06.75.32 1.12.24.33.5.52.8.67 1.07-.07 2.07-.28 3.05-.58-.22.45-.62.87-1.15 1.17.25-.03.5-.1.75-.17-.11.32-.27.64-.48.95-.54.82-1.18 1.31-1.97 1.47-.72.14-1.4.18-2.06.2-.65.02-1.3.05-1.92.09.34.8.66 1.59 1.04 2.39.09.18.18.35.27.53 1.43-.39 2.75-.97 3.97-1.7 1.56-1.25 2.84-2.73 3.73-4.34.73-1.3 1.22-2.68 1.42-4.07-.92.35-1.87.68-2.85.93-.97.25-1.96.41-2.96.52-.05.18-.09.37-.13.56-.04.22-.08.44-.12.67-.08.39-.17.78-.26 1.17z" />
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-yellow-600">
+          <svg class="h-8 w-8 text-slate-500" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <path d="M9 19c-4.286 1.35-4.286-2.55-6-3m12 5v-3.5c0-1 .099-1.405-.5-2 2.791-.3 5.5-1.366 5.5-6.04a4.567 4.567 0 0 0 -1.333 -3.21 4.192 4.192 0 00-.08-3.227s-1.05-.3-3.476 1.267a12.334 12.334 0 0 0 -6.222 0C6.462 2.723 5.413 3.023 5.413 3.023a4.192 4.192 0 0 0 -.08 3.227A4.566 4.566 0 004 9.486c0 4.64 2.709 5.68 5.5 6.014-.591.589-.56 1.183-.5 2V21" />
+          </svg>
+        </a>        
+        <a href="#" class="text-gray-400 hover:text-yellow-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+            <path fill-rule="evenodd" d="M14.447 3.026a.75.75 0 0 1 .527.921l-4.5 16.5a.75.75 0 0 1-1.448-.394l4.5-16.5a.75.75 0 0 1 .921-.527ZM16.72 6.22a.75.75 0 0 1 1.06 0l5.25 5.25a.75.75 0 0 1 0 1.06l-5.25 5.25a.75.75 0 1 1-1.06-1.06L21.44 12l-4.72-4.72a.75.75 0 0 1 0-1.06Zm-9.44 0a.75.75 0 0 1 0 1.06L2.56 12l4.72 4.72a.75.75 0 0 1-1.06 1.06L.97 12.53a.75.75 0 0 1 0-1.06l5.25-5.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+          </svg>          
+        </a>
+      </div>
+    </div>
+  </footer>
 
 </body>
+
+  <script src="./js/principal.js"></script>
 </html>
