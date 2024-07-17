@@ -1,0 +1,26 @@
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon i {
+    margin-right: 8px;
+}
+
+.btn-back i {
+    margin-right: 5px;
+}
+
+.btn-report i {
+    margin-right: 8px;
+}
+
+.btn-register i {
+    margin-right: 8px;
+}
+
+.btn-danger i {
+    margin-right: 5px;
+}
