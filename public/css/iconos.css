@@ -1,33 +1,26 @@
-/* iconos.css */
 
-/* Estilos generales para botones con iconos */
 .btn-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Estilo para el icono dentro del botón */
 .btn-icon i {
     margin-right: 8px;
 }
 
-/* Estilo específico para botones de retroceso */
 .btn-back i {
     margin-right: 5px;
 }
 
-/* Estilo específico para botones de reportes */
 .btn-report i {
     margin-right: 8px;
 }
 
-/* Estilo específico para botones de registrar */
 .btn-register i {
     margin-right: 8px;
 }
 
-/* Estilo específico para botones de borrar */
 .btn-danger i {
     margin-right: 5px;
 }
