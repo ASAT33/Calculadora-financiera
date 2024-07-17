@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Menú de móvil
-    const menuBtn = document.getElementById('menu-btn');
+   /* const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
   
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
-    });
+    });*/
   });
   
