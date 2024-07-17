@@ -16,7 +16,7 @@ app.get('/datos/:archivo', (req, res) => {
 });
 
 app.post('/ai_mistral', async (req, res) =>{
-    let prompt = `Actúa como un contador profesional. que está ocurriendo con la empresa tomando en cuenta el resultado y que medidas debería tomar con los siguientes datos dados. `
+    let prompt = `En español, Actúa como un contador profesional. que está ocurriendo con la empresa tomando en cuenta el resultado y que medidas debería tomar con los siguientes datos dados. `
     prompt += req.body.question
     try {
         const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
