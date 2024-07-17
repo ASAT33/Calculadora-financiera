@@ -4,25 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Intereses y Pagos Mensuales</title>
-    <link rel="stylesheet" href="../css/output.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="icon" href="./images/mileto-icon.ico">
 </head>
 <body>
     <header></header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <h1 class="nav-item">
-                <a class="navbar-brand" href="calculadora_intereses.html" style="color: black;">Calculadora de Intereses y Pagos Mensuales</a>
-            </h1>
-        </div>
-        <div class="hidden md:flex space-x-4">
+    <nav class="bg-slate-700 text-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p-5">
+          <!-- Logo and Title -->
+          <div class="flex items-center space-x-2">
+            <img src="images/milano-icon-pequeño.png" alt="Logo" class="h-8 w-8">
+            <span class="text-3xl font-bold">Mileto</span>
+          </div>
+          <!-- Navbar Items (hidden on small screens) -->
+          <div class="hidden md:flex space-x-4">
             <a href="principal.html" class="hover:text-yellow-600">Inicio</a>
             <a href="#" class="hover:text-yellow-600">Nosotros</a>
-            <a href="#" class= "hover:text-yellow-600">Github</a>
+            <a href="#" class="hover:text-yellow-600">Github</a>
+          </div>
+          <!-- Hamburger Menu (visible on small screens) -->
+          <div class="md:hidden">
+            <button id="menu-btn" class="focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden">
+          <a href="principal.html" class="block px-4 py-2 hover:bg-yellow-600">Inicio</a>
+          <a href="#" class="block px-4 py-2 hover:bg-yellow-600">Nosotros</a>
+          <a href="#" class="block px-4 py-2 hover:bg-yellow-600">Github</a>
         </div>
     </nav>
     
     <section id="calculadora_intereses" class="container mt-4">
+        <div class="container mx-auto mt-2 p-8">
+            <h2 class="text-2xl font-semibold text-gray-800">Calculadora de Intereses y Pagos Mensuales</h2>
         
         <form id="interest-form">
             <div class="form-group">
@@ -42,6 +61,7 @@
         <div id="result"></div>
         <div id="amortization-schedule" class="table-responsive"></div>
         <button id="export-proforma" style="display:none;" class="btn btn-secondary">Incluir en estados financieros proforma</button>
+        </div>
     </section>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
