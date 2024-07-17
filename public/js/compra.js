@@ -1,3 +1,4 @@
+
 const todayCompra = new Date();
 const formattedDateCompra = todayCompra.toISOString().split('T')[0];
 document.getElementById('fecha-compra').value = formattedDateCompra;
@@ -107,7 +108,7 @@ compraForm.addEventListener('submit', (e) => {
         .then(comprasData => {
             const comprasArray = Object.values(comprasData || {});
             const comprasLength = comprasArray.length;
-            const nuevaCompra = comprasLength + 1;
+            const nuevaCompra = comprasLength;
             fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras/${nuevaCompra}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify(data),
