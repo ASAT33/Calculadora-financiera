@@ -19,6 +19,7 @@ let totalVentasXMesA = [];
 let totalComprasXMesA = [];
 let totalInteresesXMes= []
 let aExistentes = []
+var rotation = 0
 //caja
 let comprasGastosXMesA = []
 let flujosEfectivoNetoXMesA = [];
@@ -235,11 +236,22 @@ document.addEventListener('DOMContentLoaded', async function() {
         await mostrarMesA()
         await drag_drop()
 
-        let sendElement = document.getElementById("send")
+        let sendElement = document.getElementById("arrow")
         sendElement.addEventListener('click', function() {
-            let sendElement = document.getElementById("question").textContent
-            console.log(sendElement)
-            question(sendElement)
+            let questionElement = document.getElementById("question").textContent
+            const sendElement = document.getElementById('arrow')
+            const loadingElement = document.getElementById('change')
+            sendElement.classList.toggle("change")
+            loadingElement.classList.toggle("change")
+            question(questionElement)
+        });
+
+        let rechargeElement = document.getElementById("recharge")
+        rechargeElement.addEventListener('click', function() {
+            rotation += 360
+            rechargeElement.style.transform = `rotate(${rotation}deg)`;
+            document.getElementById("question").innerHTML = "Variables"
+            document.getElementById("answer").innerHTML = ""
         });
 });
 
@@ -826,7 +838,14 @@ const razonXMes = async function() {
 }
 
 const question = async function(q){
-    fetch('/ai_mistral', {
+    const sendElement = document.getElementById('arrow')
+    const loadingElement = document.getElementById('change')
+    if(q == "Variables"){
+        sendElement.classList.toggle("change")
+        loadingElement.classList.toggle("change")
+        return
+    }
+    await fetch('/ai_mistral', {
         method: 'POST',
         body: JSON.stringify({question:q}),
         headers: {
@@ -837,12 +856,22 @@ const question = async function(q){
     .then(data =>{
         console.log(data)
         if (data) {
-            document.getElementById("answer").innerHTML = data.response
+            let aElement= document.getElementById("answer")
+            let answerElement = document.createElement('pre');
+            answerElement.textContent = data.response;
+            answerElement.className = "box-q"
+            aElement.append(answerElement);
+            
+            sendElement.classList.toggle("change")
+            loadingElement.classList.toggle("change")
         } else {
             console.error("Error al agregar el nuevo activo:", response.statusText);
+            sendElement.classList.toggle("change")
+            loadingElement.classList.toggle("change")
         }
-    })
-    .catch(error => {
+    }).catch(error => {
+        sendElement.classList.toggle("change")
+        loadingElement.classList.toggle("change")
         console.error("Error", error);
     });
 }

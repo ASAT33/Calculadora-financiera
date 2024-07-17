@@ -45,6 +45,36 @@
 #arrow{
     cursor: pointer;
 }
+
+.qa{
+    display: ruby;
+    align-content: center;
+    vertical-align: middle;
+}
+
+.change{
+    display: none;
+}
+
+#change{
+    animation: loading 0.5s linear infinite;
+}
+
+#recharge{
+    cursor: pointer;
+    transition: 1s;
+    transform: rotate(0deg);
+}
+
+@keyframes loading {
+    0% { 
+        transform: rotate(0); 
+    }
+    100% { 
+        transform: rotate(360deg);
+    }
+    }
+
 /*
 .contain {
     display: grid;
