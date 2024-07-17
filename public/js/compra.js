@@ -119,6 +119,7 @@ compraForm.addEventListener('submit', (e) => {
                     compraForm.reset();
                     document.getElementById('fecha-compra').value = formattedDateCompra;
                     actualizarCosto();
+                    cargarCompras();
                 } else {
                     throw new Error('Error al registrar la compra');
                 }
