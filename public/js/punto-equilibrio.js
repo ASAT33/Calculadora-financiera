@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('break-even-sales-services').innerText = `Punto de Equilibrio en Ventas: $${breakEvenSales.toFixed(2)}`;
       document.getElementById('results-services').classList.remove('hidden');
     });
-  
-    // Mobile Menu Toggle
+
+    // Menú de móvil
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
   
