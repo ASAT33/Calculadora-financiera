@@ -14,8 +14,7 @@
     <main id="main-content" class="container mt-4">
         <div class="btn-group" role="group">
             <button onclick="window.location.href='caja.html'" class="btn btn-secondary mb-3">Registrar Venta</button>
-            <button onclick="window.location.href='presupuesto_caja.html'"class="btn btn-primary mb-3" id="mostrar-form-compra">Registrar Compra</button>
-            <button class="btn btn-primary mb-3" id="">Agregar Producto</button>
+            <button onclick="window.location.href='presupuesto_caja.html'" class="btn btn-primary mb-3" id="mostrar-form-compra">Registrar Compra</button>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -67,22 +66,52 @@
                     </form>
                 </div>
             </div>
+            
             <div class="col-md-6">
+                <h2 class="text-primary mb-4">Agregar Producto</h2>
+                <form id="agregarProductoForm">
+                    <div class="form-group">
+                        <label for="codigo">Código:</label>
+                        <input type="text" id="codigo" name="Código" class="form-control" required><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion" name="Descripción" class="form-control" required><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="costo">Costo Unitario:</label>
+                        <input type="text" id="costo" name="Costo unitario" class="form-control" required><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="precio_venta">Precio de Venta:</label>
+                        <input type="text" id="precio_venta" name="Precio de venta" class="form-control" required><br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                </form>
+            </div>
+            <div class="col-md-12">
                 <div>
-                    <h2 class="text-primary mb-4">Tabla de Creditos</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio</th>
-                                <th>Monto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <h2 class="text-primary mb-4">Tabla de Créditos(15 dias)</h2>
+                    <div class="table-responsive">
+                        <table class="table tbody">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Monto</th>
+                                    <th>Se otorga crédito</th>
+                                    <th>Abono (50%)</th>
+                                    <th>Fecha de cancelación</th>
+                                    <th>Cancelación</th>
+                                    <th>Acciones</th>   
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

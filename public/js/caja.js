@@ -134,6 +134,7 @@ registroForm.addEventListener('submit', (e) => {
                     registroForm.reset();
                     document.getElementById('fecha').value = formattedDate;
                     actualizarPrecio();
+                    cargarCreditosAnuales() ; // cargar créditos después de registrar una nueva venta
                 } else {
                     throw new Error('Error al registrar la venta');
                 }
@@ -144,4 +145,135 @@ registroForm.addEventListener('submit', (e) => {
             });
         })
         .catch(error => console.error('Error al obtener la longitud de las ventas:', error));
+});
+function cargarCreditosAnuales() {
+    const yearActual = new Date().getFullYear(); // Obtener el año actual del sistema
+
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('table tbody');
+            tbody.innerHTML = ''; // Limpiar la tabla
+
+            Object.values(data).forEach(venta => {
+                // Verificar si se otorgó crédito y si la fecha de cancelación está definida
+                if (venta['Se otorga crédito'] === 'si' && venta['Fecha de cancelación']) {
+                    const fechaCancelacion = new Date(venta['Fecha de cancelación']);
+                    const yearVenta = fechaCancelacion.getFullYear();
+                    
+                    // Filtrar solo las ventas del año actual
+                    if (yearVenta === yearActual) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${venta.fecha}</td>
+                            <td>${venta.Producto}</td>
+                            <td>${venta.Cantidad}</td>
+                            <td>${venta.Precio}</td>
+                            <td>${venta.monto}</td>
+                            <td>${venta['Se otorga crédito']}</td>
+                            <td>${venta['Abono (50%)']}</td>
+                            <td>${venta['Fecha de cancelación']}</td>
+                            <td>${venta.Cancelación}</td>
+                            <td><button class="btn btn-secondary btn-cancelar" data-venta-id="${venta.transacción}">Cancelar y Pagar</button></td>
+                        `;
+                        tbody.appendChild(row);
+                    }
+                }
+            });
+
+            // Agregar listeners a los botones de cancelar
+            const botonesCancelar = document.querySelectorAll('.btn-cancelar');
+            botonesCancelar.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const ventaId = boton.getAttribute('data-venta-id');
+                    cancelarPagarMitad(ventaId);
+                });
+            });
+        })
+        .catch(error => console.error('Error al cargar créditos:', error));
+}
+
+function cancelarPagarMitad(ventaId) {
+    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`)
+        .then(response => response.json())
+        .then(venta => {
+            const montoTotal = venta.monto;
+            const abono = venta['Abono (50%)'] || 0;
+            if (abono === 0) {
+                alert('El abono inicial no ha sido registrado.');
+                return;
+            }
+            const cancelacion = montoTotal - abono;
+            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`, {
+                method: 'PATCH',
+                body: JSON.stringify({ Cancelación: cancelacion }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            .then(response => {
+                if (response.ok) {
+                    alert('Cancelación actualizada correctamente.');
+                    // Volver a cargar la lista de créditos después de la actualización
+                    cargarCreditosAnuales();
+                } else {
+                    throw new Error('Error al actualizar la cancelación.');
+                }
+            })
+            .catch(error => {
+                alert('Error al actualizar la cancelación.');
+                console.error(error);
+            });
+        })
+        .catch(error => console.error('Error al obtener la venta:', error));
+}
+
+// Cargar créditos al cargar la página
+document.addEventListener('DOMContentLoaded', cargarCreditosAnuales)
+
+// Función para agregar un nuevo producto
+const agregarProductoForm = document.getElementById('agregarProductoForm');
+
+agregarProductoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(agregarProductoForm);
+
+    const nuevoProducto = {};
+    formData.forEach((value, key) => {
+        nuevoProducto[key] = value;
+    });
+
+    // Obtener la longitud actual de la colección de productos
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+        .then(response => response.json())
+        .then(productosData => {
+            const productosArray = Object.values(productosData);
+            const longitud = productosArray.length;
+
+            // Calcular el ID del nuevo producto
+            const nuevoId = longitud;
+
+            // Agregar el nuevo producto usando PATCH
+            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${nuevoId}.json`, {
+                method: 'PATCH',
+                body: JSON.stringify(nuevoProducto),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Producto agregado correctamente');
+                    agregarProductoForm.reset();
+                } else {
+                    throw new Error('Error al agregar el producto');
+                }
+            })
+            .catch(error => {
+                alert('Error al agregar el producto');
+                console.error(error);
+            });
+        })
+        .catch(error => console.error('Error al obtener la longitud de productos:', error));
 });
