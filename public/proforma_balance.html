@@ -21,7 +21,7 @@
         <div class="hidden md:flex space-x-4">
             <a href="principal.html" class="hover:text-yellow-600">Inicio</a>
             <a href="#" class="hover:text-yellow-600">Nosotros</a>
-            <a href="#" class= "hover:text-yellow-600">Github</a>
+            <a href="#" class="hover:text-yellow-600">Github</a>
         </div>
     </nav>-->
     <main>
@@ -31,7 +31,6 @@
                     <button id="btn-actual" onclick="window.location.href='proforma_balance.html'" class="btn btn-primary">Balance Actual</button>
                     <button id="btn-diciembre" onclick="window.location.href='balance_diciembre.html'" class="btn btn-secondary">Balance Diciembre 2023</button>
                 </div>
-                
             </div>
         </div>
         <section id="balance-actual" class="container mt-4">
@@ -57,31 +56,62 @@
                     <h3>Total Pasivos y capital</h3>
                     <p id="total">Cargando...</p>
                 </div>
-                <div class="col-md-6">
-                    
-                </div>
-                <div class="col-md-6">
-                   
-                </div>
-            </div>
-            <div class="row mt-4">
-                 
             </div>
         </section>
 
-          
-         <section id="estado-resultados" class="container mt-4">
+        <section id="estado-resultados" class="container mt-4">
             <h2>Estado de Resultados</h2>
-            <table class="table table-striped small-table" id="estado-resultados-table">
-                <thead>
-                    <tr>
-                        <th>Concepto</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <label for="ventas" class="input-group-text">Ingresos por ventas (%):</label>
+                        <input type="number" id="ventas" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="compras" class="input-group-text">Compras (%):</label>
+                        <input type="number" id="compras" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="electricidad" class="input-group-text">Electricidad (%):</label>
+                        <input type="number" id="electricidad" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="internet" class="input-group-text">Internet (%):</label>
+                        <input type="number" id="internet" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="salarios" class="input-group-text">Salarios (%):</label>
+                        <input type="number" id="salarios" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="publicidad" class="input-group-text">Publicidad (%):</label>
+                        <input type="number" id="publicidad" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="transporte" class="input-group-text">Transporte (%):</label>
+                        <input type="number" id="transporte" class="form-control" value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="agua" class="input-group-text">Servicio de agua (%):</label>
+                        <input type="number" id="agua" class="form-control" value="0">
+                    </div>
+                    <button class="btn btn-primary" onclick="fetchEstadoResultados()">Generar Proforma</button>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-striped" id="estado-resultados-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Actual</th>
+                                <th>Proforma</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filas serán añadidas aquí por el script -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

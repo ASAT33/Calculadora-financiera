@@ -71,26 +71,33 @@ function calcularCancelacion() {
         abono = monto * 0.5;
         cancelacion = 0;
         const fecha = new Date();
-        fecha.setDate(fecha.getDate() + 15); //15 días
-        fechaCancelacion = fecha.toISOString().split('T')[0]; 
-        fechaCancelacionInput.value = fechaCancelacion; 
+        fecha.setDate(fecha.getDate() + 15); // 15 días
+        fechaCancelacion = fecha.toISOString().split('T')[0];
+        fechaCancelacionInput.value = fechaCancelacion;
     } else {
         cancelacion = monto;
-        fechaCancelacionInput.value = ''; 
+        fechaCancelacionInput.value = ''; // Vaciar el campo si no se otorga crédito
     }
 
     abonoInput.value = abono.toFixed(2);
     cancelacionInput.value = cancelacion.toFixed(2);
 }
 
+
 const registroForm = document.getElementById('registroForm');
 
 registroForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    
+    if (!fechaCancelacionInput.value) {
+        const today = new Date();
+        fechaCancelacionInput.value = today.toISOString().split('T')[0];
+    }
+
     const formData = new FormData(registroForm);
     const data = {};
     formData.forEach((value, key) => {
-        if (key === 'Fecha de cancelación' && !value) {
+        if (key === 'fecha_cancelacion' && !value) {
             data['Fecha de cancelación'] = null; 
         } else if (key === 'producto') {
             data['Producto'] = parseInt(value); 
@@ -133,7 +140,7 @@ registroForm.addEventListener('submit', (e) => {
                     registroForm.reset();
                     document.getElementById('fecha').value = formattedDate;
                     actualizarPrecio();
-                    cargarCreditosAnuales() ; 
+                    cargarCreditosAnuales(); 
                 } else {
                     throw new Error('Error al registrar la venta');
                 }
@@ -145,6 +152,7 @@ registroForm.addEventListener('submit', (e) => {
         })
         .catch(error => console.error('Error al obtener la longitud de las ventas:', error));
 });
+
 function cargarCreditosAnuales() {
     const yearActual = new Date().getFullYear(); 
 
@@ -173,7 +181,7 @@ function cargarCreditosAnuales() {
                             <td>${venta['Abono (50%)']}</td>
                             <td>${venta['Fecha de cancelación']}</td>
                             <td>${venta.Cancelación}</td>
-                            <td><button class="btn btn-secondary btn-cancelar" data-venta-id="${venta.transacción}">Cancelar y Pagar</button></td>
+                            <td><button class="btn btn-secondary btn-cancelar" data-venta-id="${venta.transacción}">Cancelar</button></td>
                         `;
                         tbody.appendChild(row);
                     }
