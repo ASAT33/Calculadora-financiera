@@ -10,13 +10,21 @@
 <body>
     <header>
     </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <h1 class="nav-item">
+                <a class="nav-link texto" href="/proforma_balance.html" style="color: black;">Balance General</a>
+            </h1>
+        </div>
+    </nav>
     <main>
         <div class="container mt-4">
             <div class="row">
                 <div class="btn-group" role="group">
-                    <button id="btn-actual" class="btn btn-primary">Balance Actual</button>
-                    <button id="btn-diciembre" class="btn btn-secondary">Balance Diciembre 2023</button>
+                    <button id="btn-actual" onclick="window.location.href='proforma_balance.html'" class="btn btn-primary">Balance Actual</button>
+                    <button id="btn-diciembre" onclick="window.location.href='balance_diciembre.html'" class="btn btn-secondary">Balance Diciembre 2023</button>
                 </div>
+                
             </div>
         </div>
         <section id="balance-actual" class="container mt-4">
@@ -37,43 +45,36 @@
                     <h4>Pasivos Fijos</h4>
                     <p id="prestamo-anual">Cargando...</p>
                     <p id="suma-total">Cargando...</p>
+                    <h3>Patrimonio Neto</h3>
+                    <p id="capital">Cargando...</p>
+                    <h3>Total Pasivos y capital</h3>
+                    <p id="total">Cargando...</p>
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+                <div class="col-md-6">
+                   
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-6">
-                    <h3>Ventas Totales Anuales</h3>
-                    <p id="total-monto">Cargando...</p>
-                </div>
-                <div class="col-md-6">
-                    <h3>Patrimonio Neto</h3>
-                    <p id="">Cargando...</p>
-                </div>
+                 
             </div>
         </section>
-        <section id="balance-diciembre" class="container mt-4" style="display: none;">
-            <h2>Balance General de Diciembre de 2023</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Activos</h3>
-                    <h4>Activos Corrientes</h4>
-                    <p id="diciembre-activos-corrientes">Cargando...</p>
-                    <h4>Activos Fijos</h4>
-                    <p id="diciembre-activos-fijos">Cargando...</p>
-                    <h3>Total Activos</h3>
-                    <p id="diciembre-total-activos">Cargando...</p>
-                </div>
-                <div class="col-md-6">
-                    <h3>Pasivos</h3>
-                    <h4>Pasivos Corrientes</h4>
-                    <p id="diciembre-cxp">Cargando...</p>
-                    <h4>Pasivos Fijos</h4>
-                    <p id="diciembre-prestamo-anual">Cargando...</p>
-                    <h3>Capital</h3>
-                    <p id="diciembre-capital">Cargando...</p>
-                    <h3>Total Pasivos y Capital</h3>
-                    <p id="diciembre-suma-total">Cargando...</p>
-                </div>
-            </div>
+
+          
+         <section id="estado-resultados" class="container mt-4">
+            <h2>Estado de Resultados</h2>
+            <table class="table table-striped small-table" id="estado-resultados-table">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

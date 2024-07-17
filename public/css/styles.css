@@ -52,3 +52,16 @@ nav li a:hover {
     border-radius: 5px;
     margin-top: 20px;
 }
+
+#estado-resultados-table {
+    font-size: 10px; 
+    width: 50%; 
+  }
+
+  #estado-resultados-table th,
+  #estado-resultados-table td {
+    padding: 4px;
+  }
+  #estado-resultados {
+    margin-top: 2rem;
+  }
