@@ -15,13 +15,11 @@ fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/product
             productoCompraSelect.appendChild(option);
         });
 
-        // Llamar a la función para actualizar el costo al seleccionar un producto
         productoCompraSelect.addEventListener('change', actualizarCosto);
-        actualizarCosto(); // Llamar al inicio para establecer el costo inicial
+        actualizarCosto();
     })
     .catch(error => console.error('Error al cargar productos:', error));
 
-// Función para actualizar el costo y el total al seleccionar un producto
 function actualizarCosto() {
     const productoCompraSelect = document.getElementById('producto-compra');
     const selectedOption = productoCompraSelect.options[productoCompraSelect.selectedIndex];
@@ -31,7 +29,6 @@ function actualizarCosto() {
     calcularTotal();
 }
 
-// calcula total al cambiar cantidad y costo
 const cantidadCompraInput = document.getElementById('cantidad-compra');
 const costoUnitarioInput = document.getElementById('costo-unitario');
 const totalInput = document.getElementById('total');
@@ -134,3 +131,96 @@ compraForm.addEventListener('submit', (e) => {
         .catch(error => console.error('Error al obtener la longitud de las compras:', error));
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const comprasTableBody = document.getElementById('comprasTableBody');
+
+    function crearFilaCompra(compra) {
+        const row = document.createElement('tr');
+
+        const fechaCell = document.createElement('td');
+        fechaCell.textContent = compra['Fecha'];
+        row.appendChild(fechaCell);
+
+        const productoCell = document.createElement('td');
+        productoCell.textContent = compra['Producto'];
+        row.appendChild(productoCell);
+
+        const cantidadCell = document.createElement('td');
+        cantidadCell.textContent = compra['Cantidad'];
+        row.appendChild(cantidadCell);
+
+        const costoUnitarioCell = document.createElement('td');
+        costoUnitarioCell.textContent = compra['Costo unitario'];
+        row.appendChild(costoUnitarioCell);
+
+        const totalCell = document.createElement('td');
+        totalCell.textContent = compra['Total'];
+        row.appendChild(totalCell);
+
+        const abonoCell = document.createElement('td');
+        abonoCell.textContent = compra['Abono'];
+        row.appendChild(abonoCell);
+
+        const fechaCancelacionCell = document.createElement('td');
+        fechaCancelacionCell.textContent = compra['Fecha de cancelación'];
+        row.appendChild(fechaCancelacionCell);
+
+        const cancelacionCell = document.createElement('td');
+        cancelacionCell.textContent = compra['Cancelación'];
+        row.appendChild(cancelacionCell);
+
+        const cancelarButtonCell = document.createElement('td');
+        const cancelarButton = document.createElement('button');
+        cancelarButton.textContent = 'Cancelar';
+        cancelarButton.classList.add('btn', 'btn-danger', 'btn-sm');
+        cancelarButton.addEventListener('click', function() {
+            cancelarCompra(compra);
+        });
+        cancelarButtonCell.appendChild(cancelarButton);
+        row.appendChild(cancelarButtonCell);
+
+        comprasTableBody.appendChild(row);
+    }
+
+    function cargarCompras() {
+        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
+            .then(response => response.json())
+            .then(comprasData => {
+                comprasTableBody.innerHTML = ''; 
+
+                Object.entries(comprasData).forEach(([key, compra]) => {
+                    if (compra.Fecha && compra.Fecha.includes('2024')) {
+                        compra.id = key; 
+                        crearFilaCompra(compra);
+                    }
+                });
+            })
+            .catch(error => console.error('Error al cargar las compras del 2024:', error));
+    }
+
+    function cancelarCompra(compra) {
+        const compraId = compra.id; 
+
+        const cancelacion = parseFloat(compra['Total']);
+        fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras/${compraId}.json`, {
+            method: 'PATCH',
+            body: JSON.stringify({ Cancelación: cancelacion }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Compra cancelada correctamente');
+                cargarCompras();
+            } else {
+                throw new Error('Error al cancelar la compra');
+            }
+        })
+        .catch(error => {
+            alert('Error al cancelar la compra');
+            console.error(error);
+        });
+    }
+    cargarCompras();
+});
