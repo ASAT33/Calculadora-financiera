@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             activosFijos = await response2.json();
             const response3 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json');
             const data = await response3.json();
+            fetchEstadoResultados()
             let totalMonto = 0;
             data.forEach(venta => {
                 if (venta['Fecha de cancelación'].includes('2024')) {
@@ -362,39 +363,91 @@ function mostrarDatos(balanceData) {
     const data = await response.json();
     const tableBody = document.getElementById('estado-resultados-table').getElementsByTagName('tbody')[0];
 
+    // Obtener valores de entrada
+    const tasas = {
+        ventas: parseFloat(document.getElementById('ventas').value) / 100 || 0,
+        compras: parseFloat(document.getElementById('compras').value) / 100 || 0,
+        electricidad: parseFloat(document.getElementById('electricidad').value) / 100 || 0,
+        internet: parseFloat(document.getElementById('internet').value) / 100 || 0,
+        salarios: parseFloat(document.getElementById('salarios').value) / 100 || 0,
+        publicidad: parseFloat(document.getElementById('publicidad').value) / 100 || 0,
+        transporte: parseFloat(document.getElementById('transporte').value) / 100 || 0,
+        agua: parseFloat(document.getElementById('agua').value) / 100 || 0,
+    };
+
+    // Proyecciones
+    const proyecciones = {
+        Ingresos_por_ventas: data.Ingresos_por_ventas * (1 + tasas.ventas),
+        Compras: data.Compras * (1 + tasas.compras),
+        Electricidad: data.Electricidad * (1 + tasas.electricidad),
+        Internet: data.Internet * (1 + tasas.internet),
+        Salarios: data.Salarios * (1 + tasas.salarios),
+        Renta: data.Renta,
+        Publicidad: data.Publicidad * (1 + tasas.publicidad),
+        Transporte: data.Transporte * (1 + tasas.transporte),
+        Servicio_de_agua: data.Servicio_de_agua * (1 + tasas.agua),
+        Intereses_de_prestamos: data.Intereses_de_prestamos,
+    };
+
+    // Proyectar Inventario Inicial y Final
+    const proyeccionInventarioInicial = data.Inventario_inicial; // El inventario final de este periodo será el inicial del siguiente
+    const proyeccionInventarioFinal = data.Inventario_final; // Supongamos un aumento del 2%
+
+    // Calcular el Total COGS proyectado
+    const proyeccionTotalCOGS = proyeccionInventarioInicial + proyecciones.Compras - proyeccionInventarioFinal;
+
+    // Calcular Ganancia Bruta proyectada
+    const proyeccionGananciaBruta = proyecciones.Ingresos_por_ventas - proyeccionTotalCOGS;
+
+    // Calcular Total de Gastos Operativos proyectado
+    const proyeccionTotalGastosOperativos = proyecciones.Servicio_de_agua + proyecciones.Electricidad + proyecciones.Internet + proyecciones.Salarios + proyecciones.Renta + proyecciones.Publicidad + proyecciones.Transporte;
+
+    // Calcular la Utilidad Neta antes de impuestos proyectada
+    const proyeccionUtilidadNetaAntesDeImpuestos = proyeccionGananciaBruta - proyeccionTotalGastosOperativos - proyecciones.Intereses_de_prestamos;
+
+    // Calcular los impuestos proyectados (25%)
+    const proyeccionImpuestos = proyeccionUtilidadNetaAntesDeImpuestos * 0.25;
+
+    // Calcular la Utilidad Neta proyectada
+    const proyeccionUtilidadNeta = proyeccionUtilidadNetaAntesDeImpuestos - proyeccionImpuestos;
+
+    // Limpiar la tabla antes de llenarla
+    tableBody.innerHTML = '';
+
     const rows = [
-        { concepto: 'Ingresos por ventas', cantidad: data.Ingresos_por_ventas },
-        { concepto: 'Costos de bienes vendidos (COGS)'},
-        { concepto: '- Inventario Inicial', cantidad: data.Inventario_inicial },
-        { concepto: '- Compras', cantidad: data.Compras },
-        { concepto: '- Inventario Final', cantidad: data.Inventario_final },
-        { concepto: 'Total COGS', cantidad: data.Total_COGS },
-        { concepto: 'Ganancia Bruta', cantidad: data.Ganancia_bruta },
-        { concepto: 'Gastos Operativos'},
-        { concepto: '- Servicio de agua', cantidad: data.Servicio_de_agua },
-        { concepto: '- Electricidad', cantidad: data.Electricidad },
-        { concepto: '- Internet', cantidad: data.Internet },
-        { concepto: '- Salarios', cantidad: data.Salarios },
-        { concepto: '- Renta', cantidad: data.Renta },
-        { concepto: '- Publicidad', cantidad: data.Publicidad },
-        { concepto: '- Transporte', cantidad: data.Transporte },
-        { concepto: 'Total Gastos Operativos', cantidad: data.Total_gastos_operativos },
-        { concepto: 'Intereses de préstamos (8%)', cantidad: data.Intereses_de_prestamos },
-        { concepto: 'Utilidad neta antes de impuestos', cantidad: data.Utilidad_neta_antes_de_impuestos },
-        { concepto: 'Impuestos 25%', cantidad: data.Impuestos },
-        { concepto: 'Total', cantidad: data.Utilidad_neta }
+        { concepto: 'Ingresos por ventas', actual: data.Ingresos_por_ventas, proforma: proyecciones.Ingresos_por_ventas },
+        { concepto: 'Costos de bienes vendidos (COGS)' },
+        { concepto: '- Inventario Inicial', actual: data.Inventario_inicial, proforma: proyeccionInventarioInicial },
+        { concepto: '- Compras', actual: data.Compras, proforma: proyecciones.Compras },
+        { concepto: '- Inventario Final', actual: data.Inventario_final, proforma: proyeccionInventarioFinal },
+        { concepto: 'Total COGS', actual: data.Total_COGS, proforma: proyeccionTotalCOGS },
+        { concepto: 'Ganancia Bruta', actual: data.Ganancia_bruta, proforma: proyeccionGananciaBruta },
+        { concepto: 'Gastos Operativos' },
+        { concepto: '- Servicio de agua', actual: data.Servicio_de_agua, proforma: proyecciones.Servicio_de_agua },
+        { concepto: '- Electricidad', actual: data.Electricidad, proforma: proyecciones.Electricidad },
+        { concepto: '- Internet', actual: data.Internet, proforma: proyecciones.Internet },
+        { concepto: '- Salarios', actual: data.Salarios, proforma: proyecciones.Salarios },
+        { concepto: '- Renta', actual: data.Renta, proforma: proyecciones.Renta },
+        { concepto: '- Publicidad', actual: data.Publicidad, proforma: proyecciones.Publicidad },
+        { concepto: '- Transporte', actual: data.Transporte, proforma: proyecciones.Transporte },
+        { concepto: 'Total Gastos Operativos', actual: data.Total_gastos_operativos, proforma: proyeccionTotalGastosOperativos },
+        { concepto: 'Intereses de préstamos (8%)', actual: data.Intereses_de_prestamos, proforma: proyecciones.Intereses_de_prestamos },
+        { concepto: 'Utilidad neta antes de impuestos', actual: data.Utilidad_neta_antes_de_impuestos, proforma: proyeccionUtilidadNetaAntesDeImpuestos },
+        { concepto: 'Impuestos 25%', actual: data.Impuestos, proforma: proyeccionImpuestos },
+        { concepto: 'Total', actual: data.Utilidad_neta, proforma: proyeccionUtilidadNeta }
     ];
 
     rows.forEach(row => {
         const tr = document.createElement('tr');
         const tdConcepto = document.createElement('td');
-        const tdCantidad = document.createElement('td');
+        const tdCantidadActual = document.createElement('td');
+        const tdCantidadProforma = document.createElement('td');
         tdConcepto.textContent = row.concepto;
-        tdCantidad.textContent = `$${parseFloat(row.cantidad).toFixed(2)}`;
+        tdCantidadActual.textContent = row.actual !== undefined ? `$${parseFloat(row.actual).toFixed(2)}` : '';
+        tdCantidadProforma.textContent = row.proforma !== undefined ? `$${parseFloat(row.proforma).toFixed(2)}` : '';
         tr.appendChild(tdConcepto);
-        tr.appendChild(tdCantidad);
+        tr.appendChild(tdCantidadActual);
+        tr.appendChild(tdCantidadProforma);
         tableBody.appendChild(tr);
     });
 }
-
-document.addEventListener('DOMContentLoaded', fetchEstadoResultados);
