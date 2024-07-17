@@ -113,7 +113,6 @@ registroForm.addEventListener('submit', (e) => {
         }
     });
 
-    //longitud del array de ventas
     fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(ventasData => {
@@ -134,6 +133,7 @@ registroForm.addEventListener('submit', (e) => {
                     registroForm.reset();
                     document.getElementById('fecha').value = formattedDate;
                     actualizarPrecio();
+                    cargarCreditosAnuales() ; 
                 } else {
                     throw new Error('Error al registrar la venta');
                 }
@@ -144,4 +144,191 @@ registroForm.addEventListener('submit', (e) => {
             });
         })
         .catch(error => console.error('Error al obtener la longitud de las ventas:', error));
+});
+function cargarCreditosAnuales() {
+    const yearActual = new Date().getFullYear(); 
+
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('#tabla-creditos tbody');
+            tbody.innerHTML = ''; 
+
+            Object.values(data).forEach(venta => {
+                // verificar si se otorgó crédito y si la fecha de cancelación está definida
+                if (venta['Se otorga crédito'] === 'si' && venta['Fecha de cancelación']) {
+                    const fechaCancelacion = new Date(venta['Fecha de cancelación']);
+                    const yearVenta = fechaCancelacion.getFullYear();
+                    
+                    // filtrar solo las ventas del año actual
+                    if (yearVenta === yearActual) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${venta.fecha}</td>
+                            <td>${venta.Producto}</td>
+                            <td>${venta.Cantidad}</td>
+                            <td>${venta.Precio}</td>
+                            <td>${venta.monto}</td>
+                            <td>${venta['Se otorga crédito']}</td>
+                            <td>${venta['Abono (50%)']}</td>
+                            <td>${venta['Fecha de cancelación']}</td>
+                            <td>${venta.Cancelación}</td>
+                            <td><button class="btn btn-secondary btn-cancelar" data-venta-id="${venta.transacción}">Cancelar y Pagar</button></td>
+                        `;
+                        tbody.appendChild(row);
+                    }
+                }
+            });
+
+            const botonesCancelar = document.querySelectorAll('.btn-cancelar');
+            botonesCancelar.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const ventaId = boton.getAttribute('data-venta-id');
+                    cancelarPagarMitad(ventaId);
+                });
+            });
+        })
+        .catch(error => console.error('Error al cargar créditos:', error));
+}
+
+
+function cancelarPagarMitad(ventaId) {
+    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`)
+        .then(response => response.json())
+        .then(venta => {
+            const montoTotal = venta.monto;
+            const abono = venta['Abono (50%)'] || 0;
+            if (abono === 0) {
+                alert('El abono inicial no ha sido registrado.');
+                return;
+            }
+            const cancelacion = montoTotal - abono;
+            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`, {
+                method: 'PATCH',
+                body: JSON.stringify({ Cancelación: cancelacion }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            .then(response => {
+                if (response.ok) {
+                    alert('Cancelación actualizada correctamente.');
+                    cargarCreditosAnuales();
+                } else {
+                    throw new Error('Error al actualizar la cancelación.');
+                }
+            })
+            .catch(error => {
+                alert('Error al actualizar la cancelación.');
+                console.error(error);
+            });
+        })
+        .catch(error => console.error('Error al obtener la venta:', error));
+}
+
+// carga créditos al cargar la página
+document.addEventListener('DOMContentLoaded', cargarCreditosAnuales)
+
+const agregarProductoForm = document.getElementById('agregarProductoForm');
+
+agregarProductoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const codigo = agregarProductoForm.querySelector('#codigo').value;
+    const descripcion = agregarProductoForm.querySelector('#descripcion').value;
+    const costo = `$${agregarProductoForm.querySelector('#costo').value}`;
+    const precio_venta = `$${agregarProductoForm.querySelector('#precio_venta').value}`;
+
+    const nuevoProducto = {
+        Código: codigo,
+        Descripción: descripcion,
+        'Costo unitario': costo,
+        'Precio de venta': precio_venta
+    };
+
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+        .then(response => response.json())
+        .then(productosData => {
+            const productosArray = Object.values(productosData);
+            const longitud = productosArray.length;
+            const nuevoId = longitud;
+
+            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${nuevoId}.json`, {
+                method: 'PATCH',
+                body: JSON.stringify(nuevoProducto),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Producto agregado correctamente');
+                    agregarProductoForm.reset();
+                    cargarProductos();
+                } else {
+                    throw new Error('Error al agregar el producto');
+                }
+            })
+            .catch(error => {
+                alert('Error al agregar el producto');
+                console.error(error);
+            });
+        })
+        .catch(error => console.error('Error al obtener la longitud de productos:', error));
+});
+
+function cargarProductos() {
+    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('#tabla-productos tbody');
+            tbody.innerHTML = ''; // Limpiar la tabla
+
+            Object.entries(data).forEach(([key, producto]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${producto.Código}</td>
+                    <td>${producto.Descripción}</td>
+                    <td>${producto['Costo unitario']}</td>
+                    <td>${producto['Precio de venta']}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm btn-borrar" data-producto-id="${key}">Borrar</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+
+                // Agregar evento de click al botón de borrar
+                const btnBorrar = row.querySelector('.btn-borrar');
+                btnBorrar.addEventListener('click', () => {
+                    const productoId = btnBorrar.getAttribute('data-producto-id');
+                    eliminarProducto(productoId);
+                });
+            });
+        })
+        .catch(error => console.error('Error al cargar productos:', error));
+}
+
+// Función para eliminar un producto por su ID
+function eliminarProducto(productoId) {
+    if (!confirm('¿Está seguro de eliminar este producto?')) {
+        return;
+    }
+
+    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${productoId}.json`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Producto eliminado correctamente');
+            cargarProductos(); 
+        } else {
+            throw new Error('Error al eliminar el producto');
+        }
+    })
+    .catch(error => console.error('Error al eliminar el producto:', error));
+}
+document.addEventListener('DOMContentLoaded', () => {
+    cargarProductos();
+    cargarCreditosAnuales();
 });
