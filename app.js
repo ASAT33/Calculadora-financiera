@@ -18,6 +18,9 @@ app.get('/datos/:archivo', (req, res) => {
 app.post('/ai_mistral', async (req, res) =>{
     let prompt = `En español, Actúa como un contador profesional. que está ocurriendo con la empresa tomando en cuenta el resultado y que medidas debería tomar con los siguientes datos dados. `
     prompt += req.body.question
+    if(req.body.question_second){
+      prompt += " Comparala con este año y mes "+req.body.question_second
+    }
     try {
         const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
           method: 'POST',
@@ -35,7 +38,7 @@ app.post('/ai_mistral', async (req, res) =>{
             ],
             temperature: 0.7,
             top_p: 1,
-            max_tokens: 1024,
+            max_tokens: 2048,
             stream: false,
             safe_prompt: false,
             random_seed: 1337

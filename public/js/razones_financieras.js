@@ -239,11 +239,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         let sendElement = document.getElementById("arrow")
         sendElement.addEventListener('click', function() {
             let questionElement = document.getElementById("question").textContent
+            let questionSecondElement = document.getElementById("question-second").textContent
             const sendElement = document.getElementById('arrow')
             const loadingElement = document.getElementById('change')
             sendElement.classList.toggle("change")
             loadingElement.classList.toggle("change")
-            question(questionElement)
+            question(questionElement,questionSecondElement)
         });
 
         let rechargeElement = document.getElementById("recharge")
@@ -251,6 +252,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             rotation += 360
             rechargeElement.style.transform = `rotate(${rotation}deg)`;
             document.getElementById("question").innerHTML = "Variables"
+            document.getElementById("question-second").innerHTML = "Variables"
             document.getElementById("answer").innerHTML = ""
         });
 });
@@ -560,10 +562,15 @@ async function drag_drop(){
           item.addEventListener('dragend', handleDragEnd);
         });
 
-        let question = document.querySelector('.box-q')
+        let question = document.getElementById("question")
         question.addEventListener('dragover', handleDragOver);
         question.addEventListener('dragenter', handleDragEnter);
         question.addEventListener('drop', handleDrop);
+
+        let question_second = document.getElementById("question-second")
+        question_second.addEventListener('dragover', handleDragOver);
+        question_second.addEventListener('dragenter', handleDragEnter);
+        question_second.addEventListener('drop', handleDrop);
 }
 
 const calcularActivosFijos = async function (){
@@ -837,7 +844,7 @@ const razonXMes = async function() {
     }
 }
 
-const question = async function(q){
+const question = async function(q,q_2){
     const sendElement = document.getElementById('arrow')
     const loadingElement = document.getElementById('change')
     if(q == "Variables"){
@@ -845,9 +852,10 @@ const question = async function(q){
         loadingElement.classList.toggle("change")
         return
     }
+    console.log(q,q_2)
     await fetch('/ai_mistral', {
         method: 'POST',
-        body: JSON.stringify({question:q}),
+        body: JSON.stringify({question:q,question_second:q_2}),
         headers: {
             'Content-Type': 'application/json'
         }
