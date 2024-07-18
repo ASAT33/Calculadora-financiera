@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <ul class="nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/principal.html"><i class="fas fa-home"></i> Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="/calculadora_intereses.html"><i class="fas fa-percentage"></i> Cálculo de Intereses</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/proforma_balance.html"><i class="fas fa-balance-scale"></i> Proforma de Balance</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/proforma_balance.html"><i class="fas fa-balance-scale"></i> Proforma</a></li>
                         <li class="nav-item"><a class="nav-link" href="/razones_financieras.html"><i class="fas fa-chart-line"></i> Razones Financieras</a></li>
                         <li class="nav-item"><a class="nav-link" href="/presupuesto_caja.html"><i class="fas fa-cash-register"></i> Presupuesto de Caja</a></li>
                         <li class="nav-item"><a class="nav-link" href="/activos.html"><i class="fas fa-building"></i> Activos Fijos</a></li>
