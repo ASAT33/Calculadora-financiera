@@ -11,7 +11,7 @@ let efectivoRestante = [];
 
 const fetchProductos = async function() {
     try {
-        const response = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json');
+        const response = await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos.json');
         const data = await response.json();
         productos = data;
         llenarSelectProductos();
@@ -173,7 +173,7 @@ const actualizarTabla = function(newAsset, tipo) {
 const fetchData = async function() {
     await fetchProductos();
 
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
     .then(response => response.json())
     .then(data => {
         ventasAnuales = data;
@@ -205,7 +205,7 @@ const fetchData = async function() {
     })
     .catch(error => console.error('Error al obtener datos de ventas anuales:', error));
 
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras.json')
         .then(response => response.json())
         .then(data => {
             comprasAnuales = data;
@@ -232,7 +232,7 @@ const fetchData = async function() {
             comprasXMesA = comprasMeses;
         }).catch(error => console.error('Error al obtener datos de compras:', error));
 
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/costos-operativos/costos-operativos.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/costos-operativos/costos-operativos.json')
         .then(response => response.json())
         .then(data => {
             for (let gasto in data) {

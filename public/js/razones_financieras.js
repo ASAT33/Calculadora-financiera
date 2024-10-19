@@ -31,7 +31,7 @@ let totalDepresacionXMesA = []
 let fechaMarcada
 document.addEventListener('DOMContentLoaded', async function() {
 
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(data => {
             let totalMonto = 0;
@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             //totalMontoElement.textContent = `${totalMonto}`;
         })
         .catch(error => console.error('Error al obtener datos de ventas anuales:', error));
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosCorrientes.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosCorrientes.json')
         .then(response => response.json())
         .then(activosCorrientes => {
-            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json')
+            fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosFijos.json')
                 .then(response => response.json())
                 .then(activosFijos => {
                     var { totalAfijos, totalAcorrien, totalAC_WI, totalA, totalCXCobrar} = mostrarActivos(activosCorrientes, activosFijos);
@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                 .catch(error => console.error('Error al obtener datos de activos fijos:', error));
         })
         .catch(error => console.error('Error al obtener datos de activos corrientes:', error));
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras.json')
         .then(response => response.json())
         .then(comprasData => {
-            fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/prestamo.json')
+            fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/prestamo.json')
                 .then(response => response.json())
                 .then(prestamoData => {
                     const {totalP, totalPcorriente/*, totalPFijos*/} = mostrarPasivos(comprasData, prestamoData);
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 
 
-        await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/inventario/inventario.json')
+        await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/inventario/inventario.json')
         .then(response => response.json())
         .then(data => {
             var inventarioI = 0;
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         })
         .catch(error => console.error('Error:', error));
 
-        await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/costos-operativos/costos-operativos.json')
+        await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/costos-operativos/costos-operativos.json')
         .then(response => response.json())
         .then(data => {
             for (let gasto in data) {
@@ -388,7 +388,7 @@ function calcularAñosEnOperacion(fechaActual,fechaInicial) {
 }
 
 async function calcularIntereses(){
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/cuotas.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/cuotas.json')
         .then(response => response.json())
         .then(cuotas => {
             let interesMeses = []
@@ -574,7 +574,7 @@ async function drag_drop(){
 }
 
 const calcularActivosFijos = async function (){
-    await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json')
+    await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosFijos.json')
                 .then(response => response.json())
                 .then(activosFijos => {
                     aExistentes.forEach(async (year)=>{

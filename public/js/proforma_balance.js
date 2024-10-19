@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     async function obtenerDatos() {
         try {
             let activosCorrientes, activosFijos;
-            const response1 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosCorrientes.json');
+            const response1 = await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosCorrientes.json');
             activosCorrientes = await response1.json();
-            const response2 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json');
+            const response2 = await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosFijos.json');
             activosFijos = await response2.json();
-            const response3 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json');
+            const response3 = await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json');
             const data = await response3.json();
             fetchEstadoResultados()
             let totalMonto = 0;
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
     async function obtenerDatosPasivos() {
         try {
             let sumaTotalGlobal, sumacorr;
-            const response1 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json');
+            const response1 = await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras.json');
             const comprasData = await response1.json();
     
-            const response2 = await fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/prestamo.json');
+            const response2 = await fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/prestamo.json');
             const prestamoData = await response2.json();
 
             const resultadoPasivos = mostrarPasivos(comprasData, prestamoData);
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     obtenerYProcesarDatos();
-        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/registros/balances/diciembre23.json')
+        fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/registros/balances/diciembre23.json')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -358,7 +358,7 @@ function mostrarDatos(balanceData) {
   }
   
   async function fetchEstadoResultados() {
-    const url = "https://admfinan-52fbd-default-rtdb.firebaseio.com/registros/estadoresltado/diciembre23.json";
+    const url = "https://admfinan-5fbd1-default-rtdb.firebaseio.com/registros/estadoresltado/diciembre23.json";
     const response = await fetch(url);
     const data = await response.json();
     const tableBody = document.getElementById('estado-resultados-table').getElementsByTagName('tbody')[0];

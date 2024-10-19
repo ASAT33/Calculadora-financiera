@@ -21,7 +21,7 @@ document.getElementById('form-nuevo-activo').addEventListener('submit', function
     };
 
     // se saca el largo de cuantos activos van
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosFijos.json')
       .then(response => response.json())
       .then(data => {
         const nextIndex = data ? Object.keys(data).length : 0;
@@ -30,7 +30,7 @@ document.getElementById('form-nuevo-activo').addEventListener('submit', function
         updates[nextIndex] = newAsset;
 
         // patch
-        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json', {
+        fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosFijos.json', {
             method: 'PATCH',
             body: JSON.stringify(updates),
             headers: {
@@ -69,7 +69,7 @@ document.getElementById('form-nuevo-activo').addEventListener('submit', function
 
 //listar los activos
 function cargarActivos() {
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/activos/activosFijos.json')
         .then(response => response.json())
         .then(data => {
             mostrarActivos(data); // Mostrar los activos en la tabla
@@ -136,7 +136,7 @@ function eliminarActivo(key) {
         return;
     }
 
-    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/activos/activosFijos/${key}.json`, {
+    fetch(`https://admfinan-5fbd-default-rtdb.firebaseio.com/activos/activosFijos/${key}.json`, {
         method: 'DELETE'
     })
     .then(response => {

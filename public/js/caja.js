@@ -2,7 +2,7 @@ const today = new Date();
 const formattedDate = today.toISOString().split('T')[0];
 document.getElementById('fecha').value = formattedDate;
 
-fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
     .then(response => response.json())
     .then(data => {
         const productoSelect = document.getElementById('producto');
@@ -120,14 +120,14 @@ registroForm.addEventListener('submit', (e) => {
         }
     });
 
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(ventasData => {
             const ventasArray = Object.values(ventasData);
             const ventasLength = ventasArray.length;
             const nuevaTransaccion = ventasLength;
             data['transacción'] = nuevaTransaccion.toString();
-            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${nuevaTransaccion}.json`, {
+            fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${nuevaTransaccion}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify(data),
                 headers: {
@@ -156,7 +156,7 @@ registroForm.addEventListener('submit', (e) => {
 function cargarCreditosAnuales() {
     const yearActual = new Date().getFullYear(); 
 
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales.json')
         .then(response => response.json())
         .then(data => {
             const tbody = document.querySelector('#tabla-creditos tbody');
@@ -201,7 +201,7 @@ function cargarCreditosAnuales() {
 
 
 function cancelarPagarMitad(ventaId) {
-    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`)
+    fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`)
         .then(response => response.json())
         .then(venta => {
             const montoTotal = venta.monto;
@@ -211,7 +211,7 @@ function cancelarPagarMitad(ventaId) {
                 return;
             }
             const cancelacion = montoTotal - abono;
-            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`, {
+            fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/ventas_anuales/${ventaId}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify({ Cancelación: cancelacion }),
                 headers: {
@@ -255,14 +255,14 @@ agregarProductoForm.addEventListener('submit', (e) => {
         'Precio de venta': precio_venta
     };
 
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
         .then(response => response.json())
         .then(productosData => {
             const productosArray = Object.values(productosData);
             const longitud = productosArray.length;
             const nuevoId = longitud;
 
-            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${nuevoId}.json`, {
+            fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos/${nuevoId}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify(nuevoProducto),
                 headers: {
@@ -287,7 +287,7 @@ agregarProductoForm.addEventListener('submit', (e) => {
 });
 
 function cargarProductos() {
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
         .then(response => response.json())
         .then(data => {
             const tbody = document.querySelector('#tabla-productos tbody');
@@ -323,7 +323,7 @@ function eliminarProducto(productoId) {
         return;
     }
 
-    fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos/${productoId}.json`, {
+    fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos/${productoId}.json`, {
         method: 'DELETE',
     })
     .then(response => {

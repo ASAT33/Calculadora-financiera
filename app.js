@@ -26,7 +26,7 @@ app.post('/ai_mistral', async (req, res) =>{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer QkfU8NHwSTp4gW9ecdP4GVFSG0aQjkQ3`
+            'Authorization': `Bearer O9xLADqKuN9L9OOtDif7cDrOmYofSiBE`
           },
           body: JSON.stringify({
             model: "mistral-small-latest",

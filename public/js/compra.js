@@ -3,7 +3,7 @@ const todayCompra = new Date();
 const formattedDateCompra = todayCompra.toISOString().split('T')[0];
 document.getElementById('fecha-compra').value = formattedDateCompra;
 
-fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
+fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/ventas_anuales/productos.json')
     .then(response => response.json())
     .then(data => {
         const productoCompraSelect = document.getElementById('producto-compra');
@@ -100,13 +100,13 @@ compraForm.addEventListener('submit', (e) => {
         }
     });
 
-    fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
+    fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras.json')
         .then(response => response.json())
         .then(comprasData => {
             const comprasArray = Object.values(comprasData || {});
             const comprasLength = comprasArray.length;
             const nuevaCompra = comprasLength;
-            fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras/${nuevaCompra}.json`, {
+            fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras/${nuevaCompra}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify(data),
                 headers: {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function cargarCompras() {
-        fetch('https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras.json')
+        fetch('https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras.json')
             .then(response => response.json())
             .then(comprasData => {
                 comprasTableBody.innerHTML = ''; 
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const compraId = compra.id; 
 
         const cancelacion = parseFloat(compra['Total']);
-        fetch(`https://admfinan-52fbd-default-rtdb.firebaseio.com/pasivos/compras/${compraId}.json`, {
+        fetch(`https://admfinan-5fbd1-default-rtdb.firebaseio.com/pasivos/compras/${compraId}.json`, {
             method: 'PATCH',
             body: JSON.stringify({ Cancelación: cancelacion }),
             headers: {
